@@ -1,0 +1,159 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.login-portal {
+  @include flex-col;
+  background-color: var(--bg-color);
+  height: calc(var(--vh, 1vh) * 100);
+  width: 100vw;
+}
+
+.login-component {
+  @include flex-col;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-size: 1.1em;
+}
+
+.login-component-spacer {
+  flex: 1 1 0px;
+  height: 100%;
+}
+
+.login-component-spacer2 {
+  flex: 3 1 0px;
+  height: 100%;
+}
+
+.login-box {
+  @include flex-col;
+  @include border-outset;
+  flex: 1 1 0px;
+  background-color: var(--button-color);
+  height: min(90%, 26em);
+  min-height: min(90%, 26em);
+  width: min(90%, 25em);
+}
+
+.login-box-titlebar {
+  background-color: $winTitlebarActive;
+  color: white;
+  user-select: none;
+  -webkit-user-select: none;
+  padding: 0.5em;
+}
+
+.login-box-banner {
+  @include flex-row;
+  background-position-y: -5em;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 1em;
+  align-items: flex-start;
+}
+
+.login-box-banner img {
+  height: 4em;
+}
+
+.login-box-content {
+  @include flex-col;
+  align-items: flex-start;
+  padding: 0.5em;
+  gap: 0.5em;
+}
+
+.login-box-form {
+  @include flex-col;
+  flex: 3 1 0px;
+  padding: 0em 1em;
+  gap: 0.5em;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.login-box-form>span {
+  white-space: nowrap;
+}
+
+.login-box-form:nth-child(2) {
+  padding-bottom: 1em;
+}
+
+.login-box-select {
+  @include outline-inset;
+  background-color: white;
+  min-height: 4em;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.login-box-button {
+  @include flex-row;
+  justify-content: flex-end;
+  font-size: 1.25em;
+  padding-bottom: 0.5em;
+  gap: 0.5em;
+  height: 100%;
+  width: 100%;
+}
+
+.login-box-button>div {
+  width: 5em;
+}
+
+.login-box-button>div:last-child {
+  padding-right: 0.8em !important;
+}
+
+.login-box-option {
+  padding-left: 0.25em;
+}
+
+.login-box-option.active {
+  padding-left: 0.25em;
+  background-color: blue;
+  color: white;
+}
+
+.login-footer {
+  @include flex-row;
+  color: white;
+  justify-content: space-between;
+  padding: 1em;
+  font-size: 1.25em;
+}
+
+.login-footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.screen-height-2 {
+
+  .login-box-banner,
+  .login-footer {
+    display: none;
+  }
+
+  .login-box {
+    height: 20em;
+    min-height: 20em;
+  }
+}
+
+.screen-height-3 {
+
+  .login-box-banner,
+  .login-box-form,
+  .login-footer {
+    display: none;
+  }
+
+  .login-box {
+    height: 6em;
+    min-height: 6em;
+  }
+}

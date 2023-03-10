@@ -1,0 +1,18 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+// .scale-3 .files {
+//   font-size: 1.25em;
+// }
+
+.screen-height-2 {
+  #root {
+    font-size: 0.8em;
+  }
+}
+
+.screen-height-3 {
+  #root {
+    font-size: 0.5em;
+  }
+}

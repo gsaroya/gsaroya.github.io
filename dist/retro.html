@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="style/index.css" />
+	<title>Gagan - Retro Page</title>
+	<style>
+		.link-button {
+			border-radius: 0.4em;
+			background-color: orange;
+			color: black;
+			font-size: 1em;
+			padding: 0.2em 0.4em;
+			margin-bottom: 1em;
+		}
+
+		html {
+			background-image: linear-gradient(rgba(0, 0, 0, 0.5),
+					rgba(0, 0, 0, 0.5)),
+				url("img/cheems.png");
+			background-repeat: repeat;
+			background-size: 150px 150px;
+			margin-top: 0em;
+		}
+
+		* {
+			font-family: "Times New Roman", Times, serif !important;
+		}
+
+		.marquee {
+			color: aqua;
+			width: 100%;
+			overflow: hidden;
+		}
+		.marquee div {
+			position: relative;
+			animation: 20s linear 0s infinite running marquee;
+			white-space: nowrap;
+		}
+
+		@keyframes marquee {
+			0% {
+				left: 100%;
+			}
+
+			100% {
+				left: -400%;
+			}
+		}
+
+		.links {
+			margin-top: 1em;
+			display: flex;
+			gap: 1em;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="marquee" style="margin-bottom: 1em;"><div>
+		Python, JavaScript, C++, MongoDB, SQL, Node.js/Express, React.js/Redux, jQuery,
+			Bootstrap, Bash, Git, OpenAPI,
+			GitHub Actions, Terraform, Elasticsearch, Microservices, Docker, Microsoft Azure, Redash, Google Analytics
+	</div>
+	</div>
+	<h1 style="max-width: 600px">Gagan&apos;s Retro Website</h1>
+	<div class="links">
+		<a href="https://linkedin.com/in/gsaroya" target="_blank">
+			<div class="link-button" style="background-color: lightgreen">
+				LinkedIn
+			</div>
+		</a>
+		<a href="https://github.com/gsaroya" target="_blank">
+			<div class="link-button" style="background-color: lightgreen">
+				GitHub
+			</div>
+		</a>
+	</div>
+	<div class="marquee" style="margin-top: 1em;"><div>
+		Python, JavaScript, C++, MongoDB, SQL, Node.js/Express, React.js/Redux, jQuery,
+			Bootstrap, Bash, Git, OpenAPI,
+			GitHub Actions, Terraform, Elasticsearch, Microservices, Docker, Microsoft Azure, Redash, Google Analytics
+	</div>
+	</div>
+</body>
+
+</html>

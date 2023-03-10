@@ -1,0 +1,112 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.program-work-sheet {
+  overflow-x: hidden;
+  /* overflow-y: scroll; */
+  background-color: white;
+  outline: 0.1em solid black !important;
+}
+
+.program-work-cols>div {
+  z-index: 4;
+}
+
+.program-work-sheet-row-num {
+  z-index: 3;
+}
+
+.program-work-sheet-row-num,
+.program-work-cols>div:first-child {
+  height: 2em;
+  width: 2em !important;
+  text-align: center;
+}
+
+.program-work-cols>div,
+.program-work-sheet-row-num {
+  outline: 0.1em solid black !important;
+  background-color: var(--button-color);
+}
+
+.program-work-cols>div,
+.program-work-sheet-row-cells>div {
+  height: 2em;
+  width: 5em;
+  text-align: center;
+}
+
+.program-work-cols,
+.program-work-sheet-row,
+.program-work-sheet-rows,
+.program-work-sheet-rows-left,
+.program-work-sheet-row-cells {
+  @include flex-row;
+  width: max-content;
+}
+
+.program-work-sheet-row-cells>div {
+  outline: 0.1em solid gray !important;
+  background-color: white;
+}
+
+.program-work-sheet-rows-left {
+  @include flex-col;
+}
+
+.program-work-sheet-rows-right {
+  @include flex-col;
+}
+
+.program-work-sheet-select {
+  @include flex-row;
+  justify-content: space-between;
+  height: 2.5em;
+}
+
+.program-work-sheet-select-buttons {
+  @include flex-row;
+  flex-grow: 1;
+  gap: 0.1em;
+}
+
+.program-work-sheet-select-button {
+  width: 2em;
+  height: 1em;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  fill: gray;
+  opacity: 0.5;
+}
+
+.go-first {
+  padding-bottom: 0.3em;
+  transform: rotate(180deg) translateY(0.01em);
+}
+
+.go-prev {
+  padding-bottom: 0.3em;
+  transform: translateX(-0.1em) rotate(180deg) translateY(0.0em);
+}
+
+.go-next {
+  padding-top: 0.3em;
+  transform: translateX(0.1em);
+}
+
+.go-last {
+  padding-top: 0.3em;
+}
+
+.program-work-sheet-select-name {
+  width: 7.5em;
+  height: 2em;
+  overflow: hidden;
+  position: relative;
+}
+
+.program-work-sheet-select-right {
+  border-top: solid black;
+  width: 100%;
+}

@@ -1,0 +1,36 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.bsod-component {
+  @include flex-col;
+  align-items: center;
+  height: calc(var(--vh, 1vh) * 100);
+  background-color: blue;
+  overflow: auto;
+}
+
+.bsod-component>div {
+  background-color: blue;
+}
+
+.bsod-content {
+  @include flex-col;
+  width: fit-content;
+  background-color: blue;
+  color: white;
+  font-size: 1.5em;
+  gap: 1em;
+  padding: 1em;
+  white-space: wrap;
+}
+
+.bsod-message {
+  font-size: 1.1em;
+  background-color: white;
+  color: blue;
+  align-self: center;
+}
+
+.bsod-frowny {
+  font-size: 10em;
+}

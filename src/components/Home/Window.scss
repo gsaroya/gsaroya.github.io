@@ -1,0 +1,167 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.os-window {
+  @include border-outset;
+  @include flex-col;
+  box-sizing: border-box;
+  background-color: var(--button-color);
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.os-window-titlebar {
+  @include flex-row;
+  background-color: $winTitlebarInactive;
+  user-select: none;
+  -webkit-user-select: none;
+  min-width: 100%;
+  max-height: 100em;
+  font-size: 1.5em;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.os-window-titlebar.active {
+  background-color: $winTitlebarActive;
+}
+
+.os-window-titlebar-icon {
+  height: 100%;
+  width: 2em;
+  padding-top: 0.2em;
+  padding-left: 0.4em;
+}
+
+.os-window-titlebar-icon>img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.os-window-titlebar-title {
+  color: white;
+  padding-left: 0.2em;
+  padding-bottom: 0.4em;
+  display: inline-flex;
+  flex-direction: row;
+  flex-grow: 2;
+  align-items: center;
+}
+
+.os-window-titlebar-buttons {
+  @include flex-row;
+  gap: 0.05em;
+  font-size: 1.5em;
+  margin: 10px 10px 10px 0px;
+  color: black;
+}
+
+.os-window-titlebar-minimize .os-button {
+  justify-content: left;
+}
+
+.os-window-titlebar-minimize .os-button-content {
+  font-size: 1.5em;
+  line-height: 0.5em;
+  text-align: left;
+  padding-left: 0.07em !important;
+}
+
+.os-window-titlebar-maximize .maximize-box {
+  height: 0.4em;
+  width: 0.5em;
+  margin-top: 0.07em;
+  border: solid black 0.08em !important;
+  border-top: solid black 0.12em !important;
+}
+
+.os-window-titlebar-maximize .os-button:active:not(.grayed-button) .maximize-box {
+  margin-left: 0.1em;
+  margin-top: 0.1em;
+}
+
+.os-window-titlebar-close {
+  margin-left: 0.15em;
+}
+
+.os-window-titlebar-close .os-button-content {
+  line-height: 0.5em;
+}
+
+.os-window-file-menu {
+  @include flex-row;
+  background-color: var(--button-color);
+  color: gray;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.os-window-file-menu-option {
+  margin-left: 0.5em;
+  cursor: not-allowed;
+  font-size: 1.2em;
+}
+
+.os-window-file-menu-option::first-letter {
+  text-decoration: underline;
+}
+
+.os-window-content {
+  @include border-inset;
+  @include flex-row;
+  background-color: $winGray;
+  margin: 0.5em 0em;
+  flex-grow: 2;
+  overflow: auto;
+  min-width: 0;
+  min-height: 0;
+}
+
+.os-window-status {
+  @include flex-row;
+  background-color: var(--button-color);
+  user-select: none;
+  -webkit-user-select: none;
+  justify-content: space-between;
+  padding: 0em 0.2em;
+}
+
+.os-window-status-left {
+  flex-grow: 3;
+  border-right-style: outset;
+  border-width: 0.2em;
+  margin-right: 0.5em;
+  border-color: $outsetColor;
+}
+
+.os-window-status-right {
+  @include flex-row;
+  flex-grow: 2;
+  justify-content: space-between;
+}
+
+.os-window-status-right>div {
+  @include border-inset;
+}
+
+.os-window-status-right-1 {
+  flex-grow: 6;
+  padding-left: 0.2em;
+}
+
+.os-window-status-right-2 {
+  flex-grow: 3;
+}
+
+.os-window-status-right-4 {
+  flex-grow: 3;
+}
+
+.os-window-status-right-5 {
+  flex-grow: 2;
+}

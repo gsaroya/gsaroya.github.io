@@ -1,0 +1,157 @@
+[
+  {
+    "picture": "/img/icons/os/info2.svg",
+    "text": "Info",
+    "program": "Info.exe",
+    "title": "Info.exe",
+    "programType": "Info",
+    "height": "7em",
+    "type": "desktop",
+    "enabled": true
+  },
+  {
+    "picture": "/img/icons/about.svg",
+    "text": "About",
+    "program": "About.exe",
+    "title": "About.exe",
+    "programType": "About",
+    "height": "7em",
+    "type": "desktop",
+    "enabled": true,
+    "slim": true
+  },
+  {
+    "picture": "/img/icons/folder.svg",
+    "text": "Documents",
+    "program": "Files.exe",
+    "title": "Documents - Files.exe",
+    "programType": "Documents",
+    "height": "7em",
+    "type": "desktop",
+    "enabled": true
+  },
+  {
+    "picture": "/img/icons/os/preferences.svg",
+    "text": "Settings",
+    "program": "Settings.exe",
+    "title": "Settings.exe",
+    "programType": "Settings",
+    "height": "7em",
+    "type": "desktop",
+    "enabled": false
+  },
+  {
+    "picture": "/img/icons/games/games2.svg",
+    "text": "Games",
+    "program": "Games.exe",
+    "title": "Games.exe",
+    "programType": "Games",
+    "height": "7em",
+    "type": "desktop",
+    "enabled": true
+  },
+  {
+    "picture": "/img/icons/notepad.svg",
+    "text": "Blog",
+    "program": "TBD.exe",
+    "title": "Blog - TBD.exe",
+    "programType": "Blog",
+    "height": "7em",
+    "type": "desktop",
+    "enabled": false
+  },
+  {
+    "picture": "/img/icons/browser.svg",
+    "text": "Internet",
+    "program": "Browser.exe",
+    "title": "Retro Site - Browser.exe",
+    "programType": "Internet",
+    "height": "7em",
+    "type": "desktop",
+    "enabled": true
+  },
+  {
+    "picture": "/img/icons/os/help.svg",
+    "text": "Help",
+    "program": "Help.exe",
+    "title": "Help.exe",
+    "programType": "Help",
+    "height": "7em",
+    "type": "desktop",
+    "enabled": true,
+    "link": "/help.html"
+  },
+  {
+    "picture": "/img/icons/files/work.svg",
+    "text": "Work_History.cells",
+    "program": "Cells.exe",
+    "title": "Work_History.cells - Cells.exe",
+    "programType": "Work",
+    "height": "7em",
+    "type": "file",
+    "enabled": true
+  },
+  {
+    "picture": "/img/icons/files/pdf.svg",
+    "text": "Resume.pdf",
+    "program": "Reader.exe",
+    "title": "Resume.pdf - Reader.exe",
+    "programType": "Resume",
+    "height": "7em",
+    "type": "file",
+    "enabled": true
+  },
+  {
+    "picture": "/img/icons/files/video.svg",
+    "text": "cool_video.mp4",
+    "program": "Player.exe",
+    "title": "cool_video.mp4 - Player.exe",
+    "programType": "Video",
+    "height": "7em",
+    "type": "file",
+    "enabled": true
+  },
+  {
+    "picture": "/img/icons/files/audio.svg",
+    "text": "cool_sounds.mp3",
+    "program": "Player.exe",
+    "title": "cool_sounds.mp3 - Player.exe",
+    "programType": "Audio",
+    "height": "7em",
+    "type": "file",
+    "enabled": true
+  },
+  {
+    "picture": "/img/icons/files/image.svg",
+    "text": "dog.jpg",
+    "program": "Viewer.exe",
+    "title": "dog.jpg - Viewer.exe",
+    "programType": "Image",
+    "height": "7em",
+    "type": "file",
+    "enabled": true,
+    "slim": true
+  },
+  {
+    "picture": "/img/icons/files/image.svg",
+    "text": "cat.gif",
+    "program": "Viewer.exe",
+    "title": "cat.gif - Viewer.exe",
+    "programType": "Image2",
+    "height": "7em",
+    "type": "file",
+    "enabled": true,
+    "slim": true
+  },
+  {
+    "picture": "/img/icons/games/pong.svg",
+    "text": "[WIP] Pong.exe",
+    "program": "Pong.exe",
+    "title": "Pong.exe",
+    "programType": "Pong",
+    "height": "7em",
+    "type": "game",
+    "enabled": true,
+    "slim": true
+  }
+]

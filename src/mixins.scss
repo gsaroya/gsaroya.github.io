@@ -1,0 +1,35 @@
+@mixin outline-outset {
+  outline-style: outset;
+  outline-color: $outsetColor;
+  outline-width: min(3px, 0.2em);
+}
+
+@mixin outline-inset {
+  outline-style: inset;
+  outline-color: $insetColor;
+  outline-width: min(3px, 0.2em);
+}
+
+@mixin border-outset {
+  border-style: outset;
+  border-color: $outsetColor;
+  border-width: min(3px, 0.2em);
+}
+
+@mixin border-inset {
+  border-style: inset;
+  border-color: $insetColor;
+  border-width: min(3px, 0.2em);
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}

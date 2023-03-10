@@ -1,0 +1,87 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.custom-scrollbars__container {
+  @include flex-row;
+  background-color: white;
+  height: 100%;
+  overflow: hidden;
+}
+
+.custom-scrollbars__content {
+  -ms-overflow-style: none;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.custom-scrollbars__content::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-scrollbars__scrollbar {
+  @include flex-col;
+  place-items: center;
+  width: 2em;
+}
+
+.custom-scrollbars__track-and-thumb {
+  height: 100%;
+  position: relative;
+  width: 2em;
+}
+
+.custom-scrollbars__track {
+  background-color: #DFDFDF;
+  bottom: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  width: 2em;
+}
+
+.custom-scrollbars__thumb {
+  background-color: var(--button-color);
+  margin-left: 0.2em;
+  outline-style: outset;
+  outline-color: $grayedColor;
+  outline-width: 0.1em !important;
+  position: absolute;
+  width: 1.7em;
+}
+
+.custom-scrollbars__button {
+  height: 2.2em;
+  padding: 0em !important;
+  user-select: none;
+  -webkit-user-select: none;
+  width: 2em;
+  z-index: 1;
+}
+
+.custom-scrollbars__button img {
+  height: 100%;
+  width: 100%;
+}
+
+.custom-scrollbars__button .os-button-content {
+  padding: 0 !important;
+  height: 100%;
+  width: 100%;
+}
+
+.custom-scrollbars__button .os-button-content>img:nth-child(2) {
+  display: none;
+}
+
+.custom-scrollbars__button .os-button:active .os-button-content>img:nth-child(1) {
+  display: none;
+}
+
+.custom-scrollbars__button .os-button:active .os-button-content>img:nth-child(2) {
+  display: inline;
+}
+
+.custom-scrollbars__button .os-button,
+.custom-scrollbars__button .os-button:active {
+  outline: none !important;
+}

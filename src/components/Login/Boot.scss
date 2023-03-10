@@ -1,0 +1,68 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.boot-component {
+  @include flex-col;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+  font-size: 1.25em;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.boot-spacer {
+  flex-grow: 1;
+  justify-self: flex-start;
+}
+
+.boot-content {
+  @include flex-col;
+  flex-grow: 2;
+  justify-self: center;
+  align-self: center;
+  gap: 1.5em;
+}
+
+.boot-content img {
+  height: 5em;
+  object-fit: contain;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+.boot-loading {
+  border: solid white !important;
+  border-width: 0.15em;
+  border-radius: 0.25em;
+  height: 1em;
+  width: 10em;
+  align-self: center;
+  justify-self: center;
+  background-color: black;
+  overflow: hidden;
+}
+
+.boot-loading-bar {
+  @include flex-row;
+  gap: 0.25em;
+  position: relative;
+  animation: 1.5s linear 0s infinite running loading-bar;
+}
+
+.boot-loading-bar>div {
+  height: 1em;
+  width: 0.75em;
+  background-image: linear-gradient(to bottom left, lightblue, var(--bg-color));
+  ;
+}
+
+@keyframes loading-bar {
+  0% {
+    left: -30%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}

@@ -1,0 +1,134 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.program-info {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr 6fr 1fr;
+  height: 100%;
+  width: 100%;
+  background-color: var(--button-color);
+  gap: 1em;
+  padding: 0em 1em;
+  font-size: 1.2em;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.info-title {
+  @include flex-row;
+  gap: 0.5em;
+  align-self: center;
+  font-size: 1.25em;
+  height: 100%;
+  padding-top: 0.5em;
+  overflow: hidden;
+}
+
+.info-title>span {
+  align-self: center;
+  white-space: nowrap;
+}
+
+.info-content {
+  background-color: lightgoldenrodyellow;
+  font-size: 0.9em;
+  overflow: auto;
+}
+
+.info-content>div {
+  padding: 1em;
+}
+
+.info-info {
+  @include flex-row;
+  gap: 1em;
+}
+
+.info-info>img {
+  object-fit: contain;
+  align-self: flex-start;
+  max-width: 8em;
+}
+
+.info-buttons {
+  @include flex-col;
+  gap: 0.5em;
+}
+
+.info-buttons>hr {
+  border: solid darkgray 0.05em !important;
+  width: 80%;
+}
+
+.info-show {
+  @include flex-row;
+  align-items: center;
+  padding-bottom: 1em;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.info-show>input {
+  margin-left: 0.5em;
+  // transform: scale(2, 2);
+}
+
+.info-show>label {
+  padding-left: 0.5em;
+}
+
+// TODO
+
+// .window-scale-3 .program-info {
+//   @include flex-col;
+// }
+
+// .window-scale-3 .program-info>div {
+//   flex: 1 1 0px;
+// }
+
+// .window-scale-3 .info-title {
+//   flex-shrink: 100;
+// }
+
+// .window-scale-3 .info-title-spacer {
+//   display: none;
+// }
+
+// .window-scale-2 .info-content {
+//   font-size: 0.85em;
+// }
+
+// .window-scale-3 .info-content {
+//   flex-grow: 5 !important;
+// }
+
+// .window-scale-3 .info-buttons {
+//   display: grid;
+//   grid-template-rows: 1fr 1fr 1fr;
+//   grid-template-columns: 1fr 1fr;
+//   gap: 0.5em;
+// }
+
+// .window-scale-3 .info-buttons>div,
+// .window-scale-3 .info-ok {
+//   font-size: 1.25em;
+// }
+
+// .window-scale-3 .info-show>input {
+//   transform: scale(1.2, 1.2);
+// }
+
+// .window-scale-3 .info-show>label {
+//   font-size: 1.2em;
+// }
+
+// .window-scale-3 .info-ok-spacer {
+//   display: inline !important;
+//   flex: 2 1 0px !important;
+// }
+
+// .window-scale-3 .info-buttons {
+//   display: none !important;
+// }

@@ -1,0 +1,65 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.os-screen {
+  @include flex-col;
+  justify-content: space-between;
+  /* min-height: 100vh; */
+  /* max-height: 100vh; */
+  height: calc(var(--vh, 1vh) * 100);
+  background-color: var(--bg-color);
+}
+
+.os-inset {
+  @include border-inset;
+  background-color: var(--button-color);
+}
+
+.desktop {
+  @include flex-row;
+  background-color: var(--bg-color);
+  transition: background-color 3s ease;
+  flex-grow: 2;
+  min-height: 0;
+}
+
+.desktop-background {
+  @include flex-col;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.screen-width-2 .desktop-background,
+.screen-width-3 .desktop-background {
+  display: none;
+}
+
+.desktop-background-gagan {
+  position: absolute;
+  width: 20%;
+  opacity: var(--bg-image-show) !important;
+  transition: opacity 3s ease;
+}
+
+.desktop-background-smiley {
+  position: absolute;
+  width: 50%;
+  opacity: calc(0.5 - var(--bg-image-show)) !important;
+  transition: opacity 3s ease;
+}
+
+.startmenu {
+  height: 600px;
+  width: 400px;
+  background-color: gray;
+  border-style: solid;
+  border-color: black;
+  position: absolute;
+  opacity: 0.7;
+  top: calc(100vh - 670px);
+}

@@ -1,0 +1,84 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.window-document-row-component {
+  @include flex-col;
+  background-color: var(--button-color);
+}
+
+.window-document-row {
+  @include flex-row;
+  justify-content: space-between;
+  padding: 0.5em 0.5em 0em 0.5em;
+}
+
+.window-document-row-left {
+  @include flex-row;
+  gap: 0.5em;
+}
+
+.window-document-nav {
+  @include flex-row;
+  height: 2.2em;
+  opacity: 0.3;
+}
+
+.window-document-nav .os-button {
+  width: 1.8em;
+}
+
+.window-document-nav-button {
+  width: 1em;
+  height: 1em;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.window-document-zoombar {
+  @include flex-row;
+  height: 2em;
+  gap: 0.2em;
+  box-sizing: border-box;
+  opacity: 0.5;
+}
+
+.window-document-zoombar .os-button {
+  height: 2em;
+  width: 2em;
+}
+
+.window-document-zoombar .os-button-content {
+  font-size: 2em;
+  line-height: 0.6em;
+}
+
+.window-document-zoom {
+  @include outline-inset;
+  margin-top: 0.1em;
+  height: 2.05em;
+  width: 3em;
+  text-align: center;
+  line-height: 2em;
+  background-color: white;
+}
+
+.window-document-row-open {
+  align-self: flex-end;
+}
+
+.window-document-row-open .os-button {
+  height: 2em;
+  padding: 0em 0.1em;
+  outline-width: 0.15em;
+}
+
+.window-document-row-open .os-button-content {
+  @include flex-row;
+  height: 2em;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.window-document-row-open img {
+  height: 1.8em;
+}

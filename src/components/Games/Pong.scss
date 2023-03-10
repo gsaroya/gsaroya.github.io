@@ -1,0 +1,18 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.pong-component {
+  @include flex-row;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  color: white;
+}
+
+.pong-component canvas {
+  height: 100%;
+  aspect-ratio: 3 / 4;
+  background-color: black;
+  outline: solid white 0.1em;
+}

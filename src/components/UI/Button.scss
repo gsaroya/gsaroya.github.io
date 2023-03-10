@@ -1,0 +1,38 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.os-button {
+  @include flex-row;
+  background-color: var(--button-color);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+// Trying to avoid weird iOS behavior...
+.os-button:not(.active-button) {
+  @include outline-outset;
+}
+
+.os-button:hover:not(.grayed-button) {
+  cursor: pointer;
+}
+
+.os-button:active:not(.grayed-button),
+.os-button.active-button:not(.grayed-button) {
+  @include outline-inset;
+  background-color: var(--button-color);
+  text-indent: 0.1em;
+}
+
+.grayed-button {
+  color: gray;
+  outline-color: $grayedColor;
+  cursor: default;
+}

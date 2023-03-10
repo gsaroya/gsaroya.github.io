@@ -1,0 +1,105 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.taskbar {
+  @include flex-row;
+  background-color: var(--button-color);
+  min-width: 100%;
+  /* max-height: 100em; */
+  font-size: 1.5em;
+  justify-content: space-between;
+  /* flex-wrap: wrap; */
+  padding: 0.1em 0em;
+  user-select: none;
+  -webkit-user-select: none;
+  z-index: 2;
+}
+
+.taskbar>div:first-child {
+  margin-left: 0.2em;
+}
+
+.taskbar>div:last-child {
+  margin-right: 0.2em;
+}
+
+.taskbar-left {
+  @include flex-row;
+  gap: 0.1em;
+  flex-shrink: 100;
+  width: 100%;
+}
+
+.taskbar-programs {
+  @include flex-row;
+  gap: 0.1em;
+  flex-wrap: wrap;
+  overflow: hidden;
+  max-height: 2.2em;
+  width: 100%;
+}
+
+.taskbar-start {
+  font-weight: bold;
+}
+
+.taskbar-program {
+  font-size: 1em;
+}
+
+.taskbar-tray {
+  @include flex-row;
+  padding: 0.1em;
+  height: 1.8em;
+  width: 6.5em;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.taskbar-icon {
+  width: 1.5em;
+  pointer-events: none;
+}
+
+.taskbar-icon.start {
+  width: 5em;
+  padding: 0;
+  padding-top: 0.1em;
+  padding-right: 0.2em;
+}
+
+.taskbar-program>.taskbar-icon {
+  width: 1.5em;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  padding-right: 0.2em;
+}
+
+.taskbar-text {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.taskbar-program>.taskbar-text {
+  font-size: 0.8em;
+}
+
+.taskbar-text,
+.taskbar-icon {
+  display: inline;
+  vertical-align: middle;
+}
+
+// @media only screen and (
+//   ((min-height: 0px) and (max-width: 300px))
+//   or ((min-height: 350px) and (max-width: 450px))
+//   or ((min-height: 500px) and (max-width: 600px))
+//   or ((min-height: 600px) and (max-width: 700px))
+// )
+.screen-width-2, .screen-width-3 {
+  .taskbar-tray {
+    display: none;
+  }
+}

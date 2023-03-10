@@ -1,0 +1,46 @@
+[
+    {
+        "company": "TAMVOES",
+        "picture": "/img/companies/tamvoes.png",
+        "location": "Waterloo, ON, CA",
+        "start": "May 2020",
+        "end": "Jan 2022",
+        "tech": "Python, SQL, Bash Scripting, Docker, HTML/CSS/JS",
+        "work1": "Designed distributed system for health data",
+        "work2": "Full-stack implementation of chat and data trust",
+        "work3": "Led and mentored the development team"
+    },
+    {
+        "company": "LCBO|next",
+        "picture": "/img/companies/lcbonext.png",
+        "location": "Kitchener, ON, CA",
+        "start": "Sept 2018",
+        "end": "Dec 2018",
+        "tech": "Python, MongoDB, SQL, Docker, HTML/CSS/JS",
+        "work1": "Designed API routes and Microservice Architecture",
+        "work2": "Provisioned infrastructure as code using Terraform",
+        "work3": "Maintained CI/CD pipeline with Azure DevOps"
+    },
+    {
+        "company": "hyperPad",
+        "picture": "/img/companies/hyperpad.png",
+        "location": "London, ON, CA",
+        "start": "Jan 2018",
+        "end": "Apr 2018",
+        "tech": "MongoDB, HTML/CSS/JS",
+        "work1": "Integration of Stripe and Zoom APIs",
+        "work2": "Created web apps using React and Node.js",
+        "work3": "Used Design Patterns such as State and Observer"
+    },
+    {
+        "company": "AGF",
+        "picture": "/img/companies/agf.png",
+        "location": "Waterloo, ON, CA",
+        "start": "Jan 2016",
+        "end": "Dec 2016",
+        "tech": "Java, XSLT, SQL, Bash Scripting, HTML/CSS/JS",
+        "work1": "Improved search engine page rank using SEO",
+        "work2": "Implemented job posting dashboard system",
+        "work3": "Deployed and updated Apache Tomcat web app"
+    }
+]

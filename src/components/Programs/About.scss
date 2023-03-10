@@ -1,0 +1,125 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.program-about {
+  @include flex-col;
+  height: 100%;
+  width: 100%;
+  padding: 1em;
+  box-sizing: border-box;
+  background-color: var(--button-color);
+}
+
+.win-height-2 .program-about,
+.win-height-3 .program-about {
+  font-size: 0.9em;
+}
+
+.about-tabs {
+  @include flex-row;
+  gap: 0.2em;
+}
+
+.about-tab {
+  @include border-outset;
+  border-bottom: none !important;
+  background-color: var(--button-color);
+  user-select: none;
+  cursor: pointer;
+}
+
+.about-tab div {
+  position: relative;
+  padding: 0.5em;
+  background-color: var(--button-color);
+  z-index: 3;
+}
+
+.about-tab.active div {
+  height: 100%;
+}
+
+.about-content {
+  @include flex-col;
+  @include border-outset;
+  background-color: var(--button-color);
+  flex-grow: 1;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.about-gagan {
+  @include flex-row;
+  gap: 2em;
+  align-self: center;
+  height: 100%;
+  width: 100%;
+}
+
+.about-gagan>* {
+  flex: 1;
+}
+
+.about-gagan-img {
+  @include flex-col;
+  justify-content: flex-start;
+}
+
+.about-gagan-img>img {
+  height: 100%;
+  align-self: center;
+  max-height: 10em;
+  object-fit: contain;
+}
+
+.about-gagan-text {
+  align-self: flex-start;
+}
+
+.about-os {
+  @include flex-row;
+  gap: 2em;
+  align-self: center;
+  height: 100%;
+  width: 100%;
+}
+
+.about-os>* {
+  flex: 1;
+}
+
+.about-os-img {
+  @include flex-col;
+  justify-content: flex-start;
+}
+
+.about-os-img>img {
+  margin-top: 2em;
+  height: 100%;
+  align-self: center;
+  max-height: 8em;
+  object-fit: contain;
+}
+
+.about-os-text {
+  align-self: flex-start;
+}
+
+.about-buttons {
+  @include flex-row;
+  align-self: flex-end;
+}
+
+.about-buttons .os-button {
+  height: 2em;
+  width: 8em;
+  font-size: 1.25em;
+}
+
+.about-buttons .os-button-content {
+  align-self: center;
+}
+
+.about-buttons>div {
+  align-self: flex-end;
+}

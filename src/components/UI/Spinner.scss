@@ -1,0 +1,21 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.spinner-component {
+  @include flex-row;
+  justify-content: center;
+  align-content: center;
+  background-color: var(--bg-color);
+}
+
+.spinner {
+  // position: "fixed";
+  // background-color: "rgba(0, 0, 0, 0.834)";
+  width: 100%;
+  max-width: 15em;
+  background-image: url("/img/hourglass.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1,
+}

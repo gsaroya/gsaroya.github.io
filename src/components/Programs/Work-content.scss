@@ -1,0 +1,65 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.program-work-sheet-rows-content {
+  @include flex-col;
+  outline: 0.15em solid black !important;
+  background-color: white;
+  height: 20em;
+  width: 25em;
+  z-index: 2;
+}
+
+.program-work-sheet-rows-content-company {
+  @include flex-row;
+}
+
+.program-work-sheet-rows-content-company-img {
+  @include flex-row;
+  height: 8em;
+  width: 100%;
+  justify-content: center;
+  outline: 0.1em solid gray !important;
+}
+
+.program-work-sheet-rows-content-company-img>img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.program-work-sheet-rows-content-company-info {
+  @include flex-col;
+  height: 100%;
+  width: 100%;
+}
+
+.program-work-sheet-rows-content-company-info-row {
+  @include flex-row;
+}
+
+.program-work-sheet-rows-content-company-info-row>div:first-child {
+  height: 2em;
+  width: 5em;
+  text-align: center;
+  outline: 0.1em solid gray !important;
+  font-weight: bold;
+}
+
+.program-work-sheet-rows-content-company-info-row>div:last-child {
+  height: 2em;
+  width: 10em;
+  text-align: center;
+  outline: 0.1em solid gray !important;
+}
+
+.program-work-sheet-rows-content-rows>div {
+  height: 2em;
+  width: 25em;
+  text-align: center;
+  outline: 0.1em solid gray !important;
+}
+
+.program-work-sheet-rows-content-rows>div:first-child {
+  font-weight: bold;
+}

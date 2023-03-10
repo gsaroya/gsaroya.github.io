@@ -1,0 +1,111 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.menu {
+  @include flex-col;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backdrop-filter: grayscale(80%);
+  -webkit-backdrop-filter: grayscale(80%);
+  z-index: 100;
+}
+
+.menu-spacer {
+  flex: 1 1 0px;
+  height: 100%;
+}
+
+.menu-spacer2 {
+  flex: 3 1 0px;
+  height: 100%;
+}
+
+.menu-modal {
+  flex: 1 1 0px;
+  @include flex-col;
+  justify-content: center;
+  background-color: var(--menu-color);
+  height: fit-content;
+  border: solid black 0.1em;
+  gap: 0;
+}
+
+.menu-modal>div {
+  background-color: var(--menu-color);
+}
+
+.menu-top {
+  background-color: var(--menu-accent-color) !important;
+  padding: 0.5em;
+}
+
+.menu-bottom .os-button-content {
+  display: inline-flex;
+  align-items: center;
+}
+
+.power-options {
+  @include flex-row;
+  gap: 2em;
+  padding: 1em 2em;
+}
+
+.power-options a {
+  text-decoration: none;
+  color: black;
+}
+
+.power-options>a>div {
+  @include flex-col;
+  align-items: center;
+  height: 6em;
+  width: 4em;
+}
+
+.power-options>a>div>img {
+  height: 4em;
+  width: 4em;
+}
+
+.power-crash>img {
+  height: 3.6em !important;
+  margin-top: 0.35em !important;
+}
+
+.theme-options,
+.sound-options {
+  @include flex-row;
+  justify-content: space-between;
+  gap: 2em;
+  padding: 0em 2em 1em 2em;
+  height: 2em;
+  align-items: center;
+}
+
+.menu select {
+  width: 100%;
+  max-width: 8em;
+  height: 100%;
+  background-color: white;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-position: top 0em right 0em;
+  background-size: 1.5em 1.5em;
+  background-repeat: no-repeat;
+  border-radius: 0;
+  position: relative;
+  font-size: 1.2em;
+  padding-left: 0.5em;
+}
+
+.menu-bottom {
+  @include flex-row;
+  background-color: var(--menu-accent-color) !important;
+  justify-content: right;
+  padding: 1em;
+  gap: 0.5em;
+}
