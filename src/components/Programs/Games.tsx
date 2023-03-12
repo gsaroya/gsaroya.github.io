@@ -9,7 +9,7 @@ interface GamesProps {
 
 function ProgramGames(props: GamesProps) {
   const openProgram = (type: number) => {
-    sounds.playClickSound();
+    sounds.clickSound.play();
     props.openProgram(type);
   }
   return (

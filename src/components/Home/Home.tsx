@@ -69,7 +69,7 @@ function OSHome(props: MainProps) {
         setLaunchInfo(false);
         openProgram(Program.Info);
       }
-      sounds.playLogonSound();
+      sounds.logonSound.play();
     }, 1000);
   }, [launchInfo, loaded]);
 

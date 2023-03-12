@@ -52,7 +52,7 @@ function GamePong() {
       Game.gameOver = true;
     }
     if (dx != Game.ball.dx || dy != Game.ball.dy)
-      sounds.playPopSound();
+      sounds.popSound.play();
     Game.ball = { x, y, dx, dy, radius };
   };
 

@@ -10,7 +10,7 @@ interface FilesProps {
 
 function ProgramFiles(props: FilesProps) {
   const openProgram = (type: number) => {
-    sounds.playClickSound();
+    sounds.clickSound.play();
     props.openProgram(type);
   }
   return (

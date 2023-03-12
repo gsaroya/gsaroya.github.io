@@ -16,7 +16,7 @@ function OSButton(props: ButtonProps) {
   const enabled = Boolean(useReactLink ? props.link : props.onClick);
   const onClick = () => {
     if (!enabled) return;
-    if (!props.muted) sounds.playClickSound();
+    if (!props.muted) sounds.clickSound.play();
     if (props.onClick) props.onClick();
   }
   return (
