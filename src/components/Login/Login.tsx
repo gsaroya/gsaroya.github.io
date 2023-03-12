@@ -71,7 +71,9 @@ function OSLogin(props: LoginProps) {
             </div>
           </div>
           <div className="login-box-button">
-            <OSButton link={"/Home"}>Login</OSButton>
+            <OSButton link={"/Home"} hasLink={true} onClick={() => {
+              localStorage.removeItem("loggedIn");
+            }}>Login</OSButton>
             <OSButton link="" onClick={() => {
               localStorage.removeItem("booted");
               props.setBooted(false);

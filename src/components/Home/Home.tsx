@@ -62,16 +62,20 @@ function OSHome(props: MainProps) {
   const [offset, setOffset] = useState(0);
   const [activeProgram, setActiveProgram] = useState(-1);
   const [showMenu, setShowMenu] = useState(false);
-  const [launchInfo, setLaunchInfo] = useState(localStorage.getItem("launchInfo") != "false");
   useEffect(() => {
     setTimeout(() => {
-      if (loaded && launchInfo) {
-        setLaunchInfo(false);
+      if (!loaded) return;
+      const launchInfo = localStorage.getItem("launchInfo") != "false";
+      const playSound = localStorage.getItem("loggedIn") != "true";
+      if (launchInfo) {
         openProgram(Program.Info);
       }
-      sounds.logonSound.play();
+      if (playSound) {
+        sounds.logonSound.play();
+        localStorage.setItem("loggedIn", "true");
+      }
     }, 1000);
-  }, [launchInfo, loaded]);
+  }, [loaded]);
 
   const handleDesktopClick = (e: any) => {
     if (e?.target?.className == "desktop") {
@@ -185,8 +189,8 @@ function OSHome(props: MainProps) {
           }
           <OSDesktopIcons openProgram={openProgram} />
           <div className="desktop-background">
-            <img style={{opacity: 0}} className="desktop-background-gagan" src="img/icons/os/gaganos-logo.svg" alt="Gagan OS Background" />
-            <img style={{opacity: 0}} className="desktop-background-smiley" src="img/smiley.png" alt="Smiley Background" />
+            <img style={{ opacity: 0 }} className="desktop-background-gagan" src="img/icons/os/gaganos-logo.svg" alt="Gagan OS Background" />
+            <img style={{ opacity: 0 }} className="desktop-background-smiley" src="img/smiley.png" alt="Smiley Background" />
           </div>
         </div>
         <OSTaskbar
