@@ -41,14 +41,18 @@ function ProgramMenu(props: MenuProps) {
         {(!loaded || !images.every(src => src)) ? <Spinner style={{ height: "20em", width: "20em" }} setDone={setLoaded} />
           : <>
             <div className="power-options">
-              <Link to={"/"} state={{delay: 3000}} onClick={() => sounds.playLogoffSound()}>
+              <Link to={"/"} state={{ delay: 3000 }} onClick={() => {
+                sounds.logoffSound.play();
+                localStorage.removeItem("loggedIn");
+              }}>
                 <div className="power-logoff">
                   <img src="/img/icons/os/logout.svg" alt="Log Off Icon" />
                   <span>Log Off</span>
                 </div>
               </Link>
-              <Link to={"/"} state={{delay: 3000}} onClick={() => {
-                sounds.playLogoffSound();
+              <Link to={"/"} state={{ delay: 3000 }} onClick={() => {
+                sounds.logoffSound.play();
+                localStorage.removeItem("loggedIn");
                 localStorage.removeItem("booted");
               }}>
                 <div className="power-restart">

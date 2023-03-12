@@ -42,7 +42,10 @@ function ProgramPlayer(props: PlayerProps) {
   }, [ref, ref.current, loaded])
 
   const play = () => {
-    if (ref.current) ref.current.play();
+    if (ref.current) {
+      ref.current.volume = 0.1;
+      ref.current.play();
+    }
   }
   const pause = () => {
     if (ref.current) ref.current.pause();
@@ -93,7 +96,7 @@ function ProgramPlayer(props: PlayerProps) {
         <OSButton muted={true} link="" onClick={stop}><img src="/img/icons/media/playback-stop.svg" alt="stop" className="player-media-button" /></OSButton>
         <OSButton muted={true} link="" onClick={skipBackward}><img src="/img/icons/media/skip-backward.svg" alt="stop" className="player-media-button" /></OSButton>
         <OSButton muted={true} link="" onClick={skipForward}><img src="/img/icons/media/skip-forward.svg" alt="stop" className="player-media-button" /></OSButton>
-        <OSButton muted={true} link="" onClick={props.toggleSound}><img src={props.sound ? "/img/icons/media/audio-on.svg" : "/img/icons/media/audio-off.svg"} alt="Sound icon" className="player-audio-button"/></OSButton>
+        <OSButton muted={true} link="" onClick={props.toggleSound}><img src={props.sound ? "/img/icons/media/audio-on.svg" : "/img/icons/media/audio-off.svg"} alt="Sound icon" className="player-audio-button" /></OSButton>
       </div>
     </div>
   );

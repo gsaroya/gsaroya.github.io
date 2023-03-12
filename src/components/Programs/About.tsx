@@ -42,7 +42,8 @@ function ProgramAboutOS() {
         &emsp;<a href="https://github.com/bokuweb/react-rnd" target="_blank">react-rnd</a><br />
         &emsp;<a href="https://vitejs.dev/" target="_blank">Vite</a><br />
         &emsp;<a href="https://sass-lang.com/documentation/syntax" target="_blank">SCSS</a><br />
-        &emsp;<a href="https://stackblitz.com/edit/react-ts-frji5h?file=components%2Fscrollbar%2Findex.tsx" target="_blank">Custom Scrollbar</a><br /><br />
+        &emsp;<a href="https://stackblitz.com/edit/react-ts-frji5h?file=components%2Fscrollbar%2Findex.tsx" target="_blank">Custom Scrollbar</a><br />
+        &emsp;<a href="https://github.com/goldfire/howler.js" target="_blank">howler.js</a><br /><br />
         Notes:<br />
         &emsp;Written from scratch for fun<br />
         &emsp;<a href="https://github.com/gsaroya/gsaroya.github.io" target="_blank">GitHub repo</a><br />

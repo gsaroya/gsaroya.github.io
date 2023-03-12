@@ -38,7 +38,7 @@ function OSDesktopIcon(props: DesktopIconProps) {
 
 function OSDesktopIcons(props: DesktopIconsProps) {
   const openProgram = (type: number) => {
-    sounds.playClickSound();
+    sounds.clickSound.play();
     props.openProgram(type);
   };
   return (
