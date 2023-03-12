@@ -42,7 +42,10 @@ function ProgramPlayer(props: PlayerProps) {
   }, [ref, ref.current, loaded])
 
   const play = () => {
-    if (ref.current) ref.current.play();
+    if (ref.current) {
+      ref.current.volume = 0.1;
+      ref.current.play();
+    }
   }
   const pause = () => {
     if (ref.current) ref.current.pause();
