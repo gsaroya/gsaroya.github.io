@@ -31,11 +31,11 @@ function OSHome(props: MainProps) {
   ];
 
   const [sound, setSound] = useState(localStorage.getItem("sound") != "false");
-  sounds.Howler.volume(sound ? 1 : 0);
+  sounds.Howler.mute(!sound);
   const applySound = (useSound: boolean) => {
     localStorage.setItem("sound", String(useSound));
     setSound(useSound);
-    sounds.Howler.volume(useSound ? 1 : 0);
+    sounds.Howler.mute(!useSound);
   };
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "classic");
