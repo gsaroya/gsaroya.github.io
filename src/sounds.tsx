@@ -1,6 +1,7 @@
 import { Howl, Howler } from 'howler';
 
 const sounds = {
+  Howler: Howler,
   clickSound: new Howl({
     src: ["/audio/click.mp3"],
     html5: true

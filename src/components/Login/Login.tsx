@@ -4,6 +4,7 @@ import OSBoot from "./Boot";
 import loadImage from "../UI/LoadImage";
 import OSButton from "../UI/Button";
 import Spinner from "../UI/Spinner";
+import sounds from "../../sounds";
 import "./Login.scss";
 
 interface LoginProps {
@@ -18,10 +19,13 @@ function OSLogin(props: LoginProps) {
   ];
 
   const [sound, setSound] = useState(localStorage.getItem("sound") != "false");
-  const applySound = (value: boolean) => {
-    localStorage.setItem("sound", String(value));
-    setSound(value);
-  }
+  sounds.Howler.volume(sound ? 1 : 0);
+  const applySound = (useSound: boolean) => {
+    localStorage.setItem("sound", String(useSound));
+    setSound(useSound);
+    sounds.Howler.volume(useSound ? 1 : 0);
+  };
+
   const [theme] = useState(localStorage.getItem("theme") || "classic");
   useEffect(() => {
     const iterator = document.documentElement.classList.entries();
