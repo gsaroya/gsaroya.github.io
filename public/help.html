@@ -2,103 +2,72 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="style/index.css" />
-	<title>Gagan - Help Page</title>
-	<style>
-		.link-button {
-			border-radius: 0.4em;
-			background-color: orange;
-			color: black;
-			font-size: 1em;
-			padding: 0.2em 0.4em;
-			margin-bottom: 1em;
-		}
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style/index.css" />
+  <title>Gagan - Help Page</title>
+  <style>
+    h1 {
+      margin-bottom: 0.5em;
+    }
 
-		html {
-			background-image: linear-gradient(rgba(0, 0, 0, 0.5),
-					rgba(0, 0, 0, 0.5)),
-				url("img/cheems.png");
-			background-repeat: repeat;
-			background-size: 150px 150px;
-			margin-top: 0em;
-		}
+    .faq {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      background-color: black;
+      gap: 0.5em;
+      padding: 1em;
+    }
 
-		* {
-			font-family: "Times New Roman", Times, serif !important;
-		}
+    .faq>p {
+      width: 100%;
+      text-align: left;
+      padding: 0;
+      margin: 0;
+    }
 
-		marquee {
-			color: aqua;
-		}
+    .faq .question {
+      text-decoration: underline;
+    }
 
-		h1 {
-			margin-bottom: 0.5em;
-		}
-
-		.links {
-			display: flex;
-			gap: 1em;
-		}
-
-		.faq {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			background-color: black;
-			gap: 0.5em;
-			padding: 1em;
-		}
-
-		.faq>p {
-			width: 100%;
-			text-align: left;
-			padding: 0;
-			margin: 0;
-		}
-
-		.faq .question {
-			text-decoration: underline;
-		}
-
-		.faq a {
-			color: blue;
-		}
-	</style>
+    .faq a {
+      color: blue;
+    }
+  </style>
 </head>
 
 <body>
-	<h1 style="max-width: 600px">Gagan's Help Page</h1>
-	<a href="/">
-		<div class="link-button">Return to Main Site</div>
-	</a>
-	<div class="links">
-		<a href="https://linkedin.com/in/gsaroya" target="_blank">
-			<div class="link-button" style="background-color: lightgreen">
-				LinkedIn
-			</div>
-		</a>
-		<a href="https://github.com/gsaroya" target="_blank">
-			<div class="link-button" style="background-color: lightgreen">
-				GitHub
-			</div>
-		</a>
-	</div>
-	<div class="faq">
-		<p class="question">What is this website about?</p>
-		<p>This is a website about me! (Gagan Saroya). I designed it based on older versions of Windows for fun.</p>
-		<br />
-		<p class="question">How do I use the website?</p>
-		<p>You will need a modern web browser with JavaScript. After the loading screen, you should be greeted by a
-			login dialog. Simply click login to enter the virtual desktop home page. From here the "about" will guide
-			you to the most relevant content.</p>
-		<br />
-		<p class="question">I have a suggestion! / I think your website has a bug!</p>
-		<p>Feedback is greatly appreciated, <a href="https://github.com/gsaroya/gsaroya.github.io/issues"
-				target="_blank">click here to submit a GitHub issue!</a></p>
-	</div>
+  <h1 style="max-width: 600px">Gagan's Help Page</h1>
+  <a href="/">
+    <div class="link-button">Return to Main Site</div>
+  </a>
+  <div class="links">
+    <a href="https://linkedin.com/in/gsaroya" target="_blank">
+      <div class="link-button" style="background-color: lightgreen">
+        LinkedIn
+      </div>
+    </a>
+    <a href="https://github.com/gsaroya" target="_blank">
+      <div class="link-button" style="background-color: lightgreen">
+        GitHub
+      </div>
+    </a>
+  </div>
+  <div class="faq">
+    <p class="question">What is this website about?</p>
+    <p>This is a website about me! (Gagan Saroya). I designed it based on older versions of Windows for fun.</p>
+    <br />
+    <p class="question">How do I use the website?</p>
+    <p>You will need a modern web browser with JavaScript. After the loading screen, you should be greeted by a
+      login dialog. Simply click login to enter the virtual desktop home page. From here the "about" will guide
+      you to the most relevant content.</p>
+    <br />
+    <p class="question">I have a suggestion! / I think your website has a bug!</p>
+    <p>Feedback is greatly appreciated, <a href="https://github.com/gsaroya/gsaroya.github.io/issues"
+        target="_blank">click here to submit a GitHub issue!</a></p>
+  </div>
 </body>
 
 </html>
