@@ -103,8 +103,10 @@ function OSWindow(props: WindowProps) {
       const dh = props.desktopRef.current.offsetHeight;
       const maxX = Math.max(dw - w, 0);
       const maxY = Math.max(dh - h, 0);
-      const xDefaultPos = (50 + (50 * props.index)) % maxX;
-      const yDefaultPos = (25 + (50 * props.index)) % maxY;
+      const xOffset = document.documentElement.classList.contains("screen-width-1") ? 50 : 10;
+      const yOffset = document.documentElement.classList.contains("screen-height-1") ? 25 : 10;
+      const xDefaultPos = (xOffset + (50 * props.index)) % maxX;
+      const yDefaultPos = (yOffset + (50 * props.index)) % maxY;
       rnd?.updatePosition({ x: xDefaultPos, y: yDefaultPos });
       setTimeout(() => setVisible(true), 250);
     }
