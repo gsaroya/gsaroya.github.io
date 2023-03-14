@@ -43,7 +43,8 @@ a {
   color: transparent;
 }
 
-marquee {
+marquee,
+.marquee {
   color: aqua;
 }
 
