@@ -5,10 +5,8 @@
   @include flex-row;
   background-color: var(--button-color);
   min-width: 100%;
-  /* max-height: 100em; */
   font-size: 1.5em;
   justify-content: space-between;
-  /* flex-wrap: wrap; */
   padding: 0.1em 0em;
   user-select: none;
   -webkit-user-select: none;
@@ -92,13 +90,8 @@
   vertical-align: middle;
 }
 
-// @media only screen and (
-//   ((min-height: 0px) and (max-width: 300px))
-//   or ((min-height: 350px) and (max-width: 450px))
-//   or ((min-height: 500px) and (max-width: 600px))
-//   or ((min-height: 600px) and (max-width: 700px))
-// )
-.screen-width-2, .screen-width-3 {
+.screen-width-2,
+.screen-width-3 {
   .taskbar-tray {
     display: none;
   }

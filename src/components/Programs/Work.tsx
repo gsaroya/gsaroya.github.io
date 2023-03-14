@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { company } from "../../types";
 import companies from "./companies.json";
 import ProgramWorkContent from "./Work-content";
@@ -7,7 +8,6 @@ import WindowFontRow from "../UI/Window-FontRow";
 import loadImage from "../UI/LoadImage";
 import Spinner from "../UI/Spinner";
 import "./Work.scss";
-import { useState } from "react";
 
 interface WorkProps {
   bringToFront: () => void;

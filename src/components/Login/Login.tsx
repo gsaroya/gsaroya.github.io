@@ -12,12 +12,14 @@ interface LoginProps {
 }
 
 function OSLogin(props: LoginProps) {
+  // Preload images
   const [loaded, setLoaded] = useState(false);
   const images = [
     loadImage("/img/clouds.jpg"),
     loadImage("/img/icons/os/gaganos.svg")
   ];
 
+  // Sound state
   const [sound, setSound] = useState(localStorage.getItem("sound") != "false");
   sounds.Howler.mute(!sound);
   const applySound = (useSound: boolean) => {
@@ -26,6 +28,7 @@ function OSLogin(props: LoginProps) {
     sounds.Howler.mute(!useSound);
   };
 
+  // Theme state
   const [theme] = useState(localStorage.getItem("theme") || "classic");
   useEffect(() => {
     const iterator = document.documentElement.classList.entries();
@@ -35,7 +38,6 @@ function OSLogin(props: LoginProps) {
         remove.push(value);
       }
     }
-
     remove.forEach(value => document.documentElement.classList.remove(value));
     document.documentElement.classList.add(`theme-${theme}`);
   }, [theme, loaded]);

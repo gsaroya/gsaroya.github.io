@@ -20,6 +20,7 @@ interface program {
 }
 
 function OSHome(props: MainProps) {
+  // Preload images
   const [loaded, setLoaded] = useState(false);
   const images = [
     loadImage("/img/icons/os/gaganos.svg"),
@@ -30,6 +31,7 @@ function OSHome(props: MainProps) {
     ...programData.filter(program => program.enabled).map(program => loadImage(program.picture)),
   ];
 
+  // Sound state
   const [sound, setSound] = useState(localStorage.getItem("sound") != "false");
   sounds.Howler.mute(!sound);
   const applySound = (useSound: boolean) => {
@@ -38,6 +40,7 @@ function OSHome(props: MainProps) {
     sounds.Howler.mute(!useSound);
   };
 
+  // Theme state
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "classic");
   const applyTheme = (useTheme: string) => {
     localStorage.setItem("theme", useTheme);
@@ -61,7 +64,6 @@ function OSHome(props: MainProps) {
   // State for opened programs
   const [programs, setPrograms] = useState<program[]>([]);
   const [indexes, setIndexes] = useState<number[]>([]);
-  const [offset, setOffset] = useState(0);
   const [activeProgram, setActiveProgram] = useState(-1);
   const [showMenu, setShowMenu] = useState(false);
   useEffect(() => {
@@ -79,6 +81,7 @@ function OSHome(props: MainProps) {
     }, 1000);
   }, [loaded]);
 
+  // When user clicks "out", deselect window
   const handleDesktopClick = (e: any) => {
     if (e?.target?.className == "desktop") {
       setActiveProgram(-1);
@@ -111,7 +114,6 @@ function OSHome(props: MainProps) {
       //   Object.keys(new_indexes).forEach(id => new_indexes[Number(id)] -= 1)
       //   delete new_indexes[close_id];
       // }
-      setOffset(offset + 1);
       setPrograms([...programs.filter(program => program.id != close_id), program]);
       setIndexes(new_indexes);
       setActiveProgram(program.id);
@@ -120,7 +122,6 @@ function OSHome(props: MainProps) {
   const closeProgram = (id: number) => {
     let new_indexes = indexes.filter(id2 => id2 != id);
     const nextProg = getNextProgram(id);
-    // setOffset(offset - 1)
     setPrograms(programs.filter(program => program.id != id));
     setIndexes(new_indexes);
     setActiveProgram(nextProg);
@@ -172,7 +173,6 @@ function OSHome(props: MainProps) {
               let progProps = {
                 key: `${program.id}`,
                 program: program.type,
-                offset: offset, //Math.max(programs.length - 1, 0),
                 index: indexes.indexOf(program.id),
                 desktopRef: ref,
                 minimized: program.minimized,

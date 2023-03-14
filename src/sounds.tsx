@@ -1,5 +1,6 @@
 import { Howl, Howler } from 'howler';
 
+// Global sfx object
 const sounds = {
   Howler: Howler,
   clickSound: new Howl({

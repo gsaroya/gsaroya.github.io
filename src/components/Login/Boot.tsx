@@ -8,14 +8,16 @@ interface BootProps {
 }
 
 function OSBoot(props: BootProps) {
+  // Preload images
+  const [loaded, setLoaded] = useState(false);
   const images = [
     loadImage("/img/clouds.jpg"),
     loadImage("/img/icons/os/gaganos.svg")
   ];
+
+  // Boot state
   const [willNotBoot, _] = useState(localStorage.getItem("booted") == "true");
   const [booting, setBooting] = useState(false);
-  const [loaded, setLoaded] = useState(false);
-
   useEffect(() => {
     if (willNotBoot) {
       props.setBooted(true);

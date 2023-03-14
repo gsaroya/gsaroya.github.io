@@ -10,6 +10,7 @@ import OSLoginPortal from "./components/Login/Login";
 import "./main.scss";
 import "./responsive.scss";
 
+// Routes for Login screen, Home screen, BSOD screen
 const router = createHashRouter([
   {
     path: "/",
@@ -31,6 +32,7 @@ const router = createHashRouter([
   },
 ]);
 
+// Set responsive design breakpoints based on viewport calculation
 const setDimensions = () => {
   let vh = window.innerHeight * 0.01;
   let wh = window.innerHeight;

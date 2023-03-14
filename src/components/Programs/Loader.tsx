@@ -14,7 +14,6 @@ import GamePong from "../Games/Pong";
 
 interface LoaderProps {
   program: number;
-  offset: number;
   index: number;
   minimized?: boolean;
   active: boolean;
