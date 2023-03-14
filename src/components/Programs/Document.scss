@@ -2,17 +2,20 @@
 @import "../../mixins.scss";
 
 .program-document {
-  height: auto;
+  @include flex-col;
+  height: 100%;
   width: 100%;
 }
 
 .program-document-pdf {
-  @include flex-row;
-  flex-grow: 2;
+  height: 100%;
   width: 100%;
+  background-color: white;
+  overflow: scroll;
 }
 
-.program-document-pdf embed {
-  /* height: auto; */
-  /* width: 100%; */
+.program-document-pdf object {
+  height: auto;
+  min-height: 100%;
+  width: 100%;
 }

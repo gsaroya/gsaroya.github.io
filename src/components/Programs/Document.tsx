@@ -10,10 +10,7 @@ function ProgramDocument(props: DocumentProps) {
     <div className="program program-document">
       <WindowDocumentRow path={props.link} />
       <div className="program-document-pdf">
-        <embed type="application/pdf"
-          src={props.link}
-          width="100%"
-          height="100%" />
+        <object type="application/pdf" data={props.link} />
       </div>
     </div>
   );
