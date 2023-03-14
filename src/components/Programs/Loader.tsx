@@ -14,7 +14,6 @@ import GamePong from "../Games/Pong";
 
 interface LoaderProps {
   program: number;
-  offset: number;
   index: number;
   minimized?: boolean;
   active: boolean;
@@ -41,7 +40,7 @@ function ProgramLoader(props: LoaderProps) {
           [Program.Internet]: <ProgramBrowser bringToFront={props.bringToFront} />,
           [Program.Help]: <ProgramWIP />,
           [Program.Work]: <ProgramWork bringToFront={props.bringToFront} />,
-          [Program.Resume]: <ProgramDocument link="resume.v4.pdf" />,
+          [Program.Resume]: <ProgramDocument link="resume.v5.pdf" />,
           [Program.Video]: <ProgramPlayer src="/img/cool_video.mp4" type="video/mp4" sound={props.sound} toggleSound={props.toggleSound} />,
           [Program.Audio]: <ProgramPlayer src="/audio/cool_sounds.m4a" type="audio/mp4" sound={props.sound} toggleSound={props.toggleSound} />,
           [Program.Image]: <ProgramViewer src="/img/cheems.png" alt="dog image" />,

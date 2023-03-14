@@ -66,10 +66,6 @@ function ProgramMenu(props: MenuProps) {
                   <span>Crash</span>
                 </div>
               </Link>
-              {/* <div className="power-help">
-              <img src="/img/icons/os/help.svg" alt="Help Icon" />
-              <span>Help</span>
-            </div> */}
             </div>
             <div className="theme-options">
               <span>Theme:</span>

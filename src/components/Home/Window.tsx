@@ -8,7 +8,6 @@ interface WindowProps extends React.HTMLProps<HTMLDivElement> {
   closeProgram: () => void;
   minimizeProgram: () => void;
   bringToFront: () => void;
-  offset: number;
   program: number;
   index: number;
   desktopRef: React.RefObject<HTMLDivElement>;
@@ -29,7 +28,8 @@ function OSWindow(props: WindowProps) {
   const [prevState, setPrevState] = useState({ x: 0, y: 0, w: 0, h: 0 });
   const slim = programs[props.program].slim;
 
-  const calcDefaults = () => {
+  // Calculate starting window height/width based on desktop size
+  const calcDefaultSize = () => {
     let defaultWidth = Math.min(1024, (props.desktopRef.current?.offsetWidth || 0)) * 0.85;
     let defaultHeight = Math.min(768, (props.desktopRef.current?.offsetHeight || 0)) * 0.85;
     if (defaultWidth <= defaultHeight) {
@@ -41,32 +41,10 @@ function OSWindow(props: WindowProps) {
     return { w: defaultWidth, h: defaultHeight };
   };
 
-  const [defaults, setDefaults] = useState(calcDefaults());
+  const [defaults, setDefaults] = useState(calcDefaultSize());
 
-  useEffect(() => {
-    setDimensions();
-    setScale();
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("orientationchange", updateDimensions);
-    return () => {
-      window.removeEventListener("resize", updateDimensions);
-      window.removeEventListener("orientationchange", updateDimensions);
-    };
-  }, [rnd]);
-
-  useEffect(() => {
-    const onBlur = () => {
-      if (MouseOver.current) {
-        props.bringToFront();
-      }
-    };
-    window.addEventListener("blur", onBlur);
-    return () => {
-      window.removeEventListener("blur", onBlur);
-    };
-  }, [MouseOver.current]);
-
-  const setScale = () => {
+  // Calculate breakpoints and font size for responsive design
+  const setScaleAndBreakpoints = () => {
     if (ref.current) {
       let w = ref.current.clientWidth;
       let newScaleW = 1;
@@ -95,7 +73,8 @@ function OSWindow(props: WindowProps) {
     }
   };
 
-  const setDimensions = () => {
+  // Calculate window position and show window
+  const setPosAndShow = () => {
     if (ref.current && props.desktopRef.current) {
       const w = ref.current.offsetWidth;
       const h = ref.current.offsetHeight;
@@ -103,21 +82,25 @@ function OSWindow(props: WindowProps) {
       const dh = props.desktopRef.current.offsetHeight;
       const maxX = Math.max(dw - w, 0);
       const maxY = Math.max(dh - h, 0);
-      const xDefaultPos = (50 + (50 * props.index)) % maxX;
-      const yDefaultPos = (25 + (50 * props.index)) % maxY;
+      const xOffset = document.documentElement.classList.contains("screen-width-1") ? 50 : 10;
+      const yOffset = document.documentElement.classList.contains("screen-height-1") ? 25 : 10;
+      const xDefaultPos = (xOffset + (50 * props.index)) % maxX;
+      const yDefaultPos = (yOffset + (50 * props.index)) % maxY;
       rnd?.updatePosition({ x: xDefaultPos, y: yDefaultPos });
       setTimeout(() => setVisible(true), 250);
     }
   };
 
+  // Recalculate window size and position
   const updateDimensions = () => {
-    const { w, h } = calcDefaults();
+    const { w, h } = calcDefaultSize();
     rnd?.updateSize({ width: w, height: h });
     setDefaults({ w, h });
-    setDimensions();
-    setScale();
+    setPosAndShow();
+    setScaleAndBreakpoints();
   };
 
+  // Store/restore size/position when toggling maximize
   const toggleMaximize = () => {
     if (!maximized) {
       const { x, y } = rnd?.draggable.state;
@@ -139,6 +122,32 @@ function OSWindow(props: WindowProps) {
     }
     setMaximized(!maximized);
   };
+
+  // Initialize window dimensions and breakpoints
+  // And recalculate when screen resizes
+  useEffect(() => {
+    setPosAndShow();
+    setScaleAndBreakpoints();
+    window.addEventListener("resize", updateDimensions);
+    window.addEventListener("orientationchange", updateDimensions);
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+      window.removeEventListener("orientationchange", updateDimensions);
+    };
+  }, [rnd]);
+
+  // Detect click and bring window to front
+  useEffect(() => {
+    const onBlur = () => {
+      if (MouseOver.current) {
+        props.bringToFront();
+      }
+    };
+    window.addEventListener("blur", onBlur);
+    return () => {
+      window.removeEventListener("blur", onBlur);
+    };
+  }, [MouseOver.current]);
 
   return (
     <Rnd
@@ -162,7 +171,7 @@ function OSWindow(props: WindowProps) {
       onResize={() => {
         props.bringToFront();
         setMaximized(false);
-        setScale();
+        setScaleAndBreakpoints();
       }}
     >
       <div

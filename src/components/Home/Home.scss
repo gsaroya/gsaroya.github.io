@@ -4,8 +4,6 @@
 .os-screen {
   @include flex-col;
   justify-content: space-between;
-  /* min-height: 100vh; */
-  /* max-height: 100vh; */
   height: calc(var(--vh, 1vh) * 100);
   background-color: var(--bg-color);
 }
