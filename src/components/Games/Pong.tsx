@@ -6,7 +6,8 @@ const Game = {
   ball: { x: 0, y: 0, radius: 0, dx: 0, dy: 0 },
   paddle: { x: 0, y: 0, width: 0, height: 0 },
   state: "start",
-  running: true
+  running: true,
+  score: 0
 };
 
 function GamePong() {
@@ -34,7 +35,8 @@ function GamePong() {
     context.font = "48px sans-serif";
     context.fillText("Game Over", canvas.width / 2 - 125, canvas.height / 2);
     context.font = "24px sans-serif";
-    context.fillText("Click to Retry", canvas.width / 2 - 75, canvas.height / 2 + 50);
+    context.fillText(`Score: ${Game.score}`, canvas.width / 2 - 50, canvas.height / 2 + 50);
+    context.fillText("Click to Retry", canvas.width / 2 - 75, canvas.height / 2 + 80);
     context.fillStyle = "white";
     context.fill();
     context.closePath();
@@ -79,6 +81,7 @@ function GamePong() {
 
     if (y < radius) {
       dy = Math.abs(dy);
+      Game.score += 1;
     } else if (betweenPaddleY(radius, y, canvas.height) && betweenPaddleX(radius, x)) {
       dy = -Math.abs(dy);
     } else if (afterPaddleY(y, canvas.height)) {
