@@ -14,7 +14,7 @@ function GamePong() {
 
   const init = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) => {
     Game.ball = { x: canvas.width / 2, y: canvas.height - 40, radius: 10, dx: 5, dy: -5 };
-    Game.paddle = { x: canvas.width / 2 - 40, y: canvas.height - 20, width: 80, height: 10 };
+    Game.paddle = { x: canvas.width / 2 - 50, y: canvas.height - 20, width: 100, height: 10 };
     Game.state = "start";
     Game.running = true;
     context.font = "48px sans-serif";
@@ -56,6 +56,18 @@ function GamePong() {
     context.closePath();
   };
 
+  const betweenPaddleY = (radius: number, y: number, height: number) => {
+    return height - radius - Game.paddle.height <= y && y < height - radius;
+  };
+
+  const afterPaddleY = (y: number, height: number) => {
+    return y >= height;
+  };
+
+  const betweenPaddleX = (radius: number, x: number) => {
+    return Game.paddle.x - radius < x && x < Game.paddle.x + Game.paddle.width + radius;
+  };
+
   const moveBall = (canvas: HTMLCanvasElement) => {
     let { x, y, dx, dy, radius } = Game.ball;
     x += dx;
@@ -66,20 +78,20 @@ function GamePong() {
     }
 
     if (y < radius) {
-      dy *= -1;
-    } else if (y <= canvas.height - radius - Game.paddle.height) {
-      // pass
-    } else if (x > Game.paddle.x && x < Game.paddle.x + Game.paddle.width) {
-      dy *= -1;
-    } else {
+      dy = Math.abs(dy);
+    } else if (betweenPaddleY(radius, y, canvas.height) && betweenPaddleX(radius, x)) {
+      dy = -Math.abs(dy);
+    } else if (afterPaddleY(y, canvas.height)) {
       Game.state = "waiting2";
       setTimeout(() => Game.state = "over", 500);
     }
+
     if (dy != Game.ball.dy && dy < 0) {
       sounds.pop2Sound.play();
     } else if (dx != Game.ball.dx || dy != Game.ball.dy) {
       sounds.popSound.play();
     }
+
     Game.ball = { x, y, dx, dy, radius };
   };
 
@@ -135,6 +147,8 @@ function GamePong() {
     const ratio = mouseX / canvasWidth;
     const trackWidth = canvasWidth + Game.paddle.width;
     Game.paddle.x = ratio * trackWidth - (Game.paddle.width / 2);
+    Game.paddle.x = Math.max(0, Game.paddle.x);
+    Game.paddle.x = Math.min(canvas.width - Game.paddle.width, Game.paddle.x);
   };
 
   const handleClick = () => {
