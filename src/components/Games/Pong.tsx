@@ -158,8 +158,7 @@ function GamePong() {
     const canvasWidth = canvas.clientWidth;
     const mouseX = e.nativeEvent.offsetX;
     const ratio = mouseX / canvasWidth;
-    const trackWidth = canvasWidth + Game.paddle.width;
-    Game.paddle.x = ratio * trackWidth - (Game.paddle.width / 2);
+    Game.paddle.x = ratio * canvas.width - (Game.paddle.width / 2);
     Game.paddle.x = Math.max(0, Game.paddle.x);
     Game.paddle.x = Math.min(canvas.width - Game.paddle.width, Game.paddle.x);
   };
