@@ -2,12 +2,16 @@ import { useEffect, useRef } from "react";
 import sounds from "../../sounds";
 import "./Pong.scss";
 
+const FRAMES_PER_SECOND = 60;
+const FRAME_MIN_TIME = (1000 / 60) * (60 / FRAMES_PER_SECOND) - (1000 / 60) * 0.5;
+
 const Game = {
   ball: { x: 0, y: 0, radius: 0, dx: 0, dy: 0 },
   paddle: { x: 0, y: 0, width: 0, height: 0 },
   state: "start",
   running: true,
-  score: 0
+  score: 0,
+  lastFrameTime: 0
 };
 
 function GamePong() {
@@ -99,8 +103,13 @@ function GamePong() {
     Game.ball = { x, y, dx, dy, radius };
   };
 
-  const gameLoop = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) => {
+  const gameLoop = (time: number, canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) => {
     if (!Game.running) return;
+    if (time - Game.lastFrameTime < FRAME_MIN_TIME) {
+      window.requestAnimationFrame(time => gameLoop(time, canvas, context));
+      return;
+    }
+    Game.lastFrameTime = time;
 
     context.clearRect(0, 0, canvas.width, canvas.height);
     switch (Game.state) {
@@ -127,7 +136,7 @@ function GamePong() {
         Game.running = false;
     }
 
-    window.requestAnimationFrame(() => gameLoop(canvas, context));
+    window.requestAnimationFrame(time => gameLoop(time, canvas, context));
 
   };
 
@@ -137,7 +146,7 @@ function GamePong() {
     const context = canvas.getContext("2d");
     if (!context) return;
     init(canvas, context);
-    gameLoop(canvas, context);
+    window.requestAnimationFrame(time => gameLoop(time, canvas, context));
     return () => {
       Game.running = false;
     };
