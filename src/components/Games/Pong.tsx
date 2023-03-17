@@ -18,6 +18,7 @@ function GamePong() {
     Game.paddle = { x: canvas.width / 2 - 50, y: canvas.height - 20, width: 100, height: 10 };
     Game.state = "start";
     Game.running = true;
+    Game.score = 0;
     context.font = "48px sans-serif";
   };
 
