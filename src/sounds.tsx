@@ -22,6 +22,11 @@ const sounds = {
     volume: 0.8,
     html5: true
   }),
+  pop2Sound: new Howl({
+    src: ["/audio/pop2.mp3"],
+    volume: 0.8,
+    html5: true
+  }),
 }
 
 export default sounds;
