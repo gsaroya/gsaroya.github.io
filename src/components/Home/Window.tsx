@@ -44,9 +44,8 @@ function OSWindow(props: WindowProps) {
   const [defaults, setDefaults] = useState(calcDefaultSize());
 
   // Calculate breakpoints and font size for responsive design
-  const setScaleAndBreakpoints = () => {
+  const setScaleAndBreakpoints = (w: number, h: number) => {
     if (ref.current) {
-      let w = ref.current.clientWidth;
       let newScaleW = 1;
       if (w > 600) {
         newScaleW = 1;
@@ -56,7 +55,6 @@ function OSWindow(props: WindowProps) {
         newScaleW = 3;
       }
 
-      let h = ref.current.clientHeight;
       let newScaleH = 1;
       if (h > 600) {
         newScaleH = 1;
@@ -74,10 +72,8 @@ function OSWindow(props: WindowProps) {
   };
 
   // Calculate window position and show window
-  const setPosAndShow = () => {
+  const setPosAndShow = (w: number, h: number) => {
     if (ref.current && props.desktopRef.current) {
-      const w = ref.current.offsetWidth;
-      const h = ref.current.offsetHeight;
       const dw = props.desktopRef.current.offsetWidth;
       const dh = props.desktopRef.current.offsetHeight;
       const maxX = Math.max(dw - w, 0);
@@ -96,8 +92,8 @@ function OSWindow(props: WindowProps) {
     const { w, h } = calcDefaultSize();
     rnd?.updateSize({ width: w, height: h });
     setDefaults({ w, h });
-    setPosAndShow();
-    setScaleAndBreakpoints();
+    setScaleAndBreakpoints(w, h);
+    setPosAndShow(w, h);
   };
 
   // Store/restore size/position when toggling maximize
@@ -126,8 +122,8 @@ function OSWindow(props: WindowProps) {
   // Initialize window dimensions and breakpoints
   // And recalculate when screen resizes
   useEffect(() => {
-    setPosAndShow();
-    setScaleAndBreakpoints();
+    setScaleAndBreakpoints(defaults.w, defaults.h);
+    setPosAndShow(defaults.w, defaults.h);
     window.addEventListener("resize", updateDimensions);
     window.addEventListener("orientationchange", updateDimensions);
     return () => {
@@ -171,7 +167,7 @@ function OSWindow(props: WindowProps) {
       onResize={() => {
         props.bringToFront();
         setMaximized(false);
-        setScaleAndBreakpoints();
+        setScaleAndBreakpoints(ref.current?.clientWidth || defaults.w, ref.current?.clientHeight || defaults.h);
       }}
     >
       <div
