@@ -28,7 +28,6 @@
 
 .player-seek {
   padding: 1em;
-  position: relative;
 }
 
 .player-seek-thumb {
@@ -45,6 +44,7 @@
   @include outline-inset;
   height: 1em;
   background-color: white;
+  position: relative;
   // cursor: pointer;
 }
 

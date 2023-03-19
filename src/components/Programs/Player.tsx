@@ -85,8 +85,9 @@ function ProgramPlayer(props: PlayerProps) {
         </video>
       </div>
       <div className="player-seek">
-        <div className="player-seek-thumb" style={{ left: `${Math.min(97, 1 + Math.ceil(progress * (0.96)))}%` }}></div>
-        <div className="player-seek-track"></div>
+        <div className="player-seek-track">
+          <div className="player-seek-thumb" style={{ left: `calc(${progress}% - 0.5em)`, top: `-0.2em` }}></div>
+        </div>
       </div>
       <div className="player-buttons">
         {playing ?
