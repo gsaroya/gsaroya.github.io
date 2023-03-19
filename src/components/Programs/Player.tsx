@@ -18,6 +18,7 @@ function ProgramPlayer(props: PlayerProps) {
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const poster = props.type.startsWith("audio") ? "/img/icons/files/audio.svg" : "/img/icons/files/video.svg";
+  const seekRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const setPlayingTrue = () => setPlaying(true);
@@ -26,7 +27,7 @@ function ProgramPlayer(props: PlayerProps) {
       if (ref.current) {
         setProgress(100 * ref.current.currentTime / ref.current.duration);
       }
-    }
+    };
     if (ref.current) {
       ref.current.addEventListener("playing", setPlayingTrue);
       ref.current.addEventListener("pause", setPlayingFalse);
@@ -38,34 +39,44 @@ function ProgramPlayer(props: PlayerProps) {
         ref.current.removeEventListener("pause", setPlayingFalse);
         ref.current.removeEventListener("timeupdate", handlePlaying);
       }
-    }
-  }, [ref, ref.current, loaded])
+    };
+  }, [ref, ref.current, loaded]);
 
   const play = () => {
     if (ref.current) {
       ref.current.volume = 0.1;
       ref.current.play();
     }
-  }
+  };
   const pause = () => {
     if (ref.current) ref.current.pause();
-  }
+  };
   const stop = () => {
     if (ref.current) {
       ref.current.pause();
       ref.current.currentTime = 0;
     }
-  }
+  };
   const skipBackward = () => {
     if (ref.current) {
       ref.current.currentTime = 0;
     }
-  }
+  };
   const skipForward = () => {
     if (ref.current) {
       ref.current.currentTime = ref.current.duration;
     }
-  }
+  };
+
+  const handleSeek = (e: React.MouseEvent<HTMLDivElement>, move: boolean) => {
+    if (!ref.current || !seekRef.current || (move && e.buttons == 0)) return;
+    const rect = seekRef.current.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const width = seekRef.current.clientWidth;
+    const ratio = mouseX / width;
+    ref.current.currentTime = ratio * ref.current.duration;
+    setProgress(100 * (ratio * ref.current.duration) / ref.current.duration);
+  };
 
   const images = [
     loadImage("/img/icons/media/playback-pause.svg"),
@@ -85,7 +96,7 @@ function ProgramPlayer(props: PlayerProps) {
         </video>
       </div>
       <div className="player-seek">
-        <div className="player-seek-track">
+        <div className="player-seek-track" ref={seekRef} onClick={(e) => handleSeek(e, false)} onMouseMove={(e) => handleSeek(e, true)}>
           <div className="player-seek-thumb" style={{ left: `calc(${progress}% - 0.5em)`, top: `-0.2em` }}></div>
         </div>
       </div>
