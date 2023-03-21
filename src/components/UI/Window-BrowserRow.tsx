@@ -4,6 +4,8 @@ import "./Window-BrowserRow.scss";
 interface BrowserRowProps extends React.HTMLProps<HTMLDivElement> {
   pathIcon: string;
   path: string;
+  refresh?: () => void;
+  setUrl?: () => void;
 }
 
 function WindowBrowserRow(props: BrowserRowProps) {
@@ -11,9 +13,9 @@ function WindowBrowserRow(props: BrowserRowProps) {
     <div className="window-browser-row-component" style={props.style}>
       <div className="window-browser-row">
         <div className="window-browser-row-left">
-          <OSButton link="" className="window-browser-row-img"><img src="/img/icons/nav/explorer-arrow-left.svg" alt="Explorer Arrow Down Left icon" /></OSButton>
-          <OSButton link="" className="window-browser-row-img"><img src="/img/icons/nav/explorer-arrow-right.svg" alt="Explorer Arrow Down Right icon" /></OSButton>
-          <OSButton link="" className="window-browser-row-img"><img src="/img/icons/nav/explorer-refresh.svg" alt="Explorer Refresh icon" /></OSButton>
+          <OSButton link="" onClick={props.refresh} className="window-browser-row-img"><img src="/img/icons/nav/explorer-arrow-left.svg" alt="Explorer Arrow Down Left icon" /></OSButton>
+          <OSButton link="" onClick={props.refresh} className="window-browser-row-img"><img src="/img/icons/nav/explorer-arrow-right.svg" alt="Explorer Arrow Down Right icon" /></OSButton>
+          <OSButton link="" onClick={props.refresh} className="window-browser-row-img"><img src="/img/icons/nav/explorer-refresh.svg" alt="Explorer Refresh icon" /></OSButton>
         </div>
         <span>Address:</span>
         <div className="window-browser-row-dropdown">
@@ -23,7 +25,7 @@ function WindowBrowserRow(props: BrowserRowProps) {
           </div>
           <img src="/img/icons/os/arrow-down.svg" alt="Arrow Down icon" />
         </div>
-        <OSButton link="" className="window-browser-row-go">
+        <OSButton link="" onClick={props.setUrl} className="window-browser-row-go">
           <img src="/img/icons/os/shortcut.svg" alt="Go icon" />
           <span>Go</span>
         </OSButton>

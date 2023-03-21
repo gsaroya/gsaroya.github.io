@@ -17,7 +17,8 @@
 .window-browser-row-dropdown {
   @include outline-inset;
   @include flex-row;
-  flex-grow: 3;
+  width: 0;
+  flex: 1 1 0;
   opacity: 0.5;
   height: 2em;
   gap: 0;
@@ -31,6 +32,16 @@
   background-color: white;
   align-items: center;
   gap: 0.25em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.window-browser-row-url span {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .window-browser-row-url img {
