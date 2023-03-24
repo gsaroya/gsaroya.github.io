@@ -13,6 +13,7 @@ interface WindowProps extends React.HTMLProps<HTMLDivElement> {
   desktopRef: React.RefObject<HTMLDivElement>;
   showStatusRight?: boolean;
   minimized?: boolean;
+  hideButtons?: boolean;
   active: boolean;
 }
 
@@ -122,8 +123,7 @@ function OSWindow(props: WindowProps) {
   // Initialize window dimensions and breakpoints
   // And recalculate when screen resizes
   useEffect(() => {
-    setScaleAndBreakpoints(defaults.w, defaults.h);
-    setPosAndShow(defaults.w, defaults.h);
+    updateDimensions();
     window.addEventListener("resize", updateDimensions);
     window.addEventListener("orientationchange", updateDimensions);
     return () => {
@@ -187,11 +187,12 @@ function OSWindow(props: WindowProps) {
             <div className="os-window-titlebar-icon"><img src={programs[props.program].picture} alt={programs[props.program].title} /></div>
             <div className="os-window-titlebar-title" onDoubleClick={toggleMaximize}>{programs[props.program].title}</div>
           </div>
+          { props.hideButtons ? null :
           <div className="os-window-titlebar-buttons">
             <OSButton className="os-window-titlebar-minimize" onClick={props.minimizeProgram} link="" style={{ height: "0.9em", width: "0.9em" }}>-</OSButton>
             <OSButton className="os-window-titlebar-maximize" onClick={toggleMaximize} link="" style={{ height: "0.9em", width: "0.9em" }}><div className="maximize-box" /></OSButton>
             <OSButton className="os-window-titlebar-close" onClick={props.closeProgram} link="" style={{ height: "0.9em", width: "0.9em" }}>x</OSButton>
-          </div>
+          </div>}
         </div>
         <div className="os-window-file-menu">
           <div className="os-window-file-menu-option">File</div>

@@ -41,7 +41,7 @@ function ProgramMenu(props: MenuProps) {
         {(!loaded || !images.every(src => src)) ? <Spinner style={{ height: "20em", width: "20em" }} setDone={setLoaded} />
           : <>
             <div className="power-options">
-              <Link to={"/"} state={{ delay: 3000 }} onClick={() => {
+              <Link to={"/Login"} state={{ delay: 3000 }} onClick={() => {
                 sounds.logoffSound.play();
                 localStorage.removeItem("loggedIn");
               }}>
@@ -50,7 +50,7 @@ function ProgramMenu(props: MenuProps) {
                   <span>Log Off</span>
                 </div>
               </Link>
-              <Link to={"/"} state={{ delay: 3000 }} onClick={() => {
+              <Link to={"/Login"} state={{ delay: 3000 }} onClick={() => {
                 sounds.logoffSound.play();
                 localStorage.removeItem("loggedIn");
                 localStorage.removeItem("booted");
