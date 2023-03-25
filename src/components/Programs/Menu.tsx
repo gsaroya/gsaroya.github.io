@@ -50,14 +50,14 @@ function ProgramMenu(props: MenuProps) {
                   <span>Log Off</span>
                 </div>
               </Link>
-              <Link to={"/Login"} state={{ delay: 3000 }} onClick={() => {
+              <Link to={"/"} state={{ delay: 3000 }} onClick={() => {
                 sounds.logoffSound.play();
                 localStorage.removeItem("loggedIn");
                 localStorage.removeItem("booted");
               }}>
                 <div className="power-restart">
-                  <img src="/img/icons/os/reboot.svg" alt="Restart Icon" />
-                  <span>Restart</span>
+                  <img src="/img/icons/os/reboot.svg" alt="Shutdown Icon" />
+                  <span>Shutdown</span>
                 </div>
               </Link>
               <Link to={"/Crash"}>
