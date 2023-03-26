@@ -17,6 +17,7 @@ interface WindowProps extends React.HTMLProps<HTMLDivElement> {
   active: boolean;
   title?: string;
   large?: boolean;
+  center?: boolean;
 }
 
 function OSWindow(props: WindowProps) {
@@ -88,7 +89,7 @@ function OSWindow(props: WindowProps) {
       const dh = props.desktopRef.current.offsetHeight;
       const maxX = Math.max(dw - w, 0);
       const maxY = Math.max(dh - h, 0);
-      if (props.large) {
+      if (props.center) {
         const xOffset = (dw - w) / 2;
         const yOffset = (dh - h) / 2;
         const xDefaultPos = xOffset % maxX;

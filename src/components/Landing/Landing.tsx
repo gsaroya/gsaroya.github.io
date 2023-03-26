@@ -42,12 +42,12 @@ function OSLanding() {
         active={true}
         hideButtons={true}
         title={"Welcome"}
-        large={true}
+        center={true}
       >
         <div className="landing-window">
           <div className="landing-window-blurb-col">
             <div className="landing-window-blurb">
-              My name is Gagan, welcome to my website!
+              My name is Gagan, welcome to my website! Try dragging and resizing this window.
               <br /><br />
               To learn more about me, click the button below and start the interactive experience!
             </div>
@@ -57,14 +57,19 @@ function OSLanding() {
           </div>
           <div className="landing-window-photo-col">
             <img className="landing-window-photo" src="/img/gagan.jpg" alt="" />
-            <OSButton link={"/Login"}>
-              <img src="/img/icons/linkedin.svg" alt="" />
-              <span>LinkedIn</span>
-            </OSButton>
-            <OSButton link={"/Login"}>
-              <img src="/img/icons/github.svg" alt="" />
-              <span>GitHub</span>
-            </OSButton>
+            <div className="landing-window-photo-col-buttons">
+              <OSButton link={""} onClick={() => open("https://github.com/gsaroya", "_blank")}>
+                <img src="/img/icons/github.svg" alt="" />
+                <span>GitHub</span>
+              </OSButton>
+              <OSButton link={""} onClick={() => open("https://linkedin.com/in/gsaroya", "_blank")}>
+                <img src="/img/icons/linkedin.svg" alt="" />
+                <span>LinkedIn</span>
+              </OSButton>
+              <OSButton link={""} onClick={() => open("/resume.v5.pdf", "_blank")}>
+                <span>Résumé</span>
+              </OSButton>
+            </div>
           </div>
         </div>
       </OSWindow>
