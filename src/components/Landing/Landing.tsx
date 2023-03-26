@@ -10,7 +10,10 @@ function OSLanding() {
   // Preload images
   const [loaded, setLoaded] = useState(false);
   const images = [
-    loadImage("/img/icons/os/gaganos.svg")
+    loadImage("/img/icons/os/gaganos.svg"),
+    loadImage("/img/gagan.jpg"),
+    loadImage("/img/icons/github.svg"),
+    loadImage("/img/icons/linkedin.svg"),
   ];
 
   // Theme state
@@ -52,18 +55,18 @@ function OSLanding() {
               To learn more about me, click the button below and start the interactive experience!
             </div>
             <OSButton className="landing-window-blurb-button" link={"/Login"}>
-              <img src="/img/icons/os/gaganos.svg" alt="" />
+              <img src="/img/icons/os/gaganos.svg" alt="GaganOS logo" />
             </OSButton>
           </div>
           <div className="landing-window-photo-col">
-            <img className="landing-window-photo" src="/img/gagan.jpg" alt="" />
+            <img className="landing-window-photo" src="/img/gagan.jpg" alt="Gagan photo" />
             <div className="landing-window-photo-col-buttons">
               <OSButton link={""} onClick={() => open("https://github.com/gsaroya", "_blank")}>
-                <img src="/img/icons/github.svg" alt="" />
+                <img src="/img/icons/github.svg" alt="GitHub logo" />
                 <span>GitHub</span>
               </OSButton>
               <OSButton link={""} onClick={() => open("https://linkedin.com/in/gsaroya", "_blank")}>
-                <img src="/img/icons/linkedin.svg" alt="" />
+                <img src="/img/icons/linkedin.svg" alt="LinkedIn logo" />
                 <span>LinkedIn</span>
               </OSButton>
               <OSButton link={""} onClick={() => open("/resume.v5.pdf", "_blank")}>
