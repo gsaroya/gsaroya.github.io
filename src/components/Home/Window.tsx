@@ -33,20 +33,21 @@ function OSWindow(props: WindowProps) {
 
   // Calculate starting window height/width based on desktop size
   const calcDefaultSize = () => {
-    if (props.large) {
-      let defaultWidth = Math.max(300, (props.desktopRef.current?.offsetWidth || 0)) * 0.85;
-      let defaultHeight = Math.max(300, (props.desktopRef.current?.offsetHeight || 0)) * 0.85;
-      return { w: defaultWidth, h: defaultHeight };
-    }
-
     let defaultWidth = Math.min(1024, (props.desktopRef.current?.offsetWidth || 0)) * 0.85;
     let defaultHeight = Math.min(768, (props.desktopRef.current?.offsetHeight || 0)) * 0.85;
+
+    if (props.large) {
+      defaultWidth = Math.max(300, (props.desktopRef.current?.offsetWidth || 0)) * 0.85;
+      defaultHeight = Math.max(300, (props.desktopRef.current?.offsetHeight || 0)) * 0.85;
+    }
+
     if (defaultWidth <= defaultHeight) {
       defaultHeight = Math.min(defaultHeight, defaultWidth * (4 / 3));
     } else {
       if (slim) defaultWidth *= (2 / 3);
       defaultWidth = Math.min(defaultWidth, defaultHeight * (4 / 3));
     }
+
     return { w: defaultWidth, h: defaultHeight };
   };
 
@@ -88,8 +89,8 @@ function OSWindow(props: WindowProps) {
       const maxX = Math.max(dw - w, 0);
       const maxY = Math.max(dh - h, 0);
       if (props.large) {
-        const xOffset = dw * 0.075;
-        const yOffset = dh * 0.075;
+        const xOffset = (dw - w) / 2;
+        const yOffset = (dh - h) / 2;
         const xDefaultPos = xOffset % maxX;
         const yDefaultPos = yOffset % maxY;
         rnd?.updatePosition({ x: xDefaultPos, y: yDefaultPos });

@@ -7,3 +7,67 @@
   height: calc(var(--vh, 1vh) * 100);
   width: 100vw;
 }
+
+.landing-window {
+  @include flex-row;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2em;
+}
+
+.landing-window-blurb-col {
+  @include flex-col;
+  gap: 2em;
+  padding: 2em;
+  align-items: center;
+}
+
+.landing-window-blurb {
+  font-size: 1.5em;
+}
+
+.landing-window-blurb-button {
+  width: min(100%, 20em);
+  height: 10em;
+}
+
+.landing-window-blurb-button .os-button-content {
+  height: 100%;
+  width: 100%;
+}
+
+.landing-window-blurb-button img {
+  height: 100%;
+  width: 100%;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.landing-window-photo-col {
+  @include flex-col;
+  gap: 1.5em;
+}
+
+.landing-window-photo {
+  border-radius: 1em;
+  height: 15em !important;
+  width: 15em !important;
+}
+
+.landing-window-photo-col img {
+  height: 1em;
+  width: 1em;
+}
+
+.landing-window-photo-col .os-button {
+  font-size: 2em;
+}
+
+
+.landing-window-photo-col .os-button-content {
+  @include flex-row;
+  align-items: center;
+  gap: 0.3em;
+}

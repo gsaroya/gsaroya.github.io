@@ -43,7 +43,31 @@ function OSLanding() {
         hideButtons={true}
         title={"Welcome"}
         large={true}
-      ></OSWindow>
+      >
+        <div className="landing-window">
+          <div className="landing-window-blurb-col">
+            <div className="landing-window-blurb">
+              My name is Gagan, welcome to my website!
+              <br /><br />
+              To learn more about me, click the button below and start the interactive experience!
+            </div>
+            <OSButton className="landing-window-blurb-button" link={"/Login"}>
+              <img src="/img/icons/os/gaganos.svg" alt="" />
+            </OSButton>
+          </div>
+          <div className="landing-window-photo-col">
+            <img className="landing-window-photo" src="/img/gagan.jpg" alt="" />
+            <OSButton link={"/Login"}>
+              <img src="/img/icons/linkedin.svg" alt="" />
+              <span>LinkedIn</span>
+            </OSButton>
+            <OSButton link={"/Login"}>
+              <img src="/img/icons/github.svg" alt="" />
+              <span>GitHub</span>
+            </OSButton>
+          </div>
+        </div>
+      </OSWindow>
     </div>
   );
 }
