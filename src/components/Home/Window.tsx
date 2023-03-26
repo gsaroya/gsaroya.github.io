@@ -15,6 +15,8 @@ interface WindowProps extends React.HTMLProps<HTMLDivElement> {
   minimized?: boolean;
   hideButtons?: boolean;
   active: boolean;
+  title?: string;
+  large?: boolean;
 }
 
 function OSWindow(props: WindowProps) {
@@ -27,10 +29,16 @@ function OSWindow(props: WindowProps) {
   const [fSize, setFSize] = useState(1);
   const [maximized, setMaximized] = useState(false);
   const [prevState, setPrevState] = useState({ x: 0, y: 0, w: 0, h: 0 });
-  const slim = programs[props.program].slim;
+  const slim = props.program != -1 && programs[props.program].slim;
 
   // Calculate starting window height/width based on desktop size
   const calcDefaultSize = () => {
+    if (props.large) {
+      let defaultWidth = Math.max(300, (props.desktopRef.current?.offsetWidth || 0)) * 0.85;
+      let defaultHeight = Math.max(300, (props.desktopRef.current?.offsetHeight || 0)) * 0.85;
+      return { w: defaultWidth, h: defaultHeight };
+    }
+
     let defaultWidth = Math.min(1024, (props.desktopRef.current?.offsetWidth || 0)) * 0.85;
     let defaultHeight = Math.min(768, (props.desktopRef.current?.offsetHeight || 0)) * 0.85;
     if (defaultWidth <= defaultHeight) {
@@ -79,11 +87,19 @@ function OSWindow(props: WindowProps) {
       const dh = props.desktopRef.current.offsetHeight;
       const maxX = Math.max(dw - w, 0);
       const maxY = Math.max(dh - h, 0);
-      const xOffset = document.documentElement.classList.contains("screen-width-1") ? 50 : 10;
-      const yOffset = document.documentElement.classList.contains("screen-height-1") ? 25 : 10;
-      const xDefaultPos = (xOffset + (50 * props.index)) % maxX;
-      const yDefaultPos = (yOffset + (50 * props.index)) % maxY;
-      rnd?.updatePosition({ x: xDefaultPos, y: yDefaultPos });
+      if (props.large) {
+        const xOffset = dw * 0.075;
+        const yOffset = dh * 0.075;
+        const xDefaultPos = xOffset % maxX;
+        const yDefaultPos = yOffset % maxY;
+        rnd?.updatePosition({ x: xDefaultPos, y: yDefaultPos });
+      } else {
+        const xOffset = document.documentElement.classList.contains("screen-width-1") ? 50 : 10;
+        const yOffset = document.documentElement.classList.contains("screen-height-1") ? 25 : 10;
+        const xDefaultPos = (xOffset + (50 * props.index)) % maxX;
+        const yDefaultPos = (yOffset + (50 * props.index)) % maxY;
+        rnd?.updatePosition({ x: xDefaultPos, y: yDefaultPos });
+      }
       setTimeout(() => setVisible(true), 250);
     }
   };
@@ -182,37 +198,49 @@ function OSWindow(props: WindowProps) {
           MouseOver.current = false;
         }}
       >
-        <div className={"os-window-titlebar" + (props.active ? " active" : "")}>
-          <div style={{ flexGrow: 2, display: "flex" }} className="handle">
-            <div className="os-window-titlebar-icon"><img src={programs[props.program].picture} alt={programs[props.program].title} /></div>
-            <div className="os-window-titlebar-title" onDoubleClick={toggleMaximize}>{programs[props.program].title}</div>
+        {props.program == -1
+          ? <div className={"os-window-titlebar" + (props.active ? " active" : "")}>
+            <div style={{ flexGrow: 2, display: "flex" }} className="handle">
+              <div className="os-window-titlebar-title" style={{ padding: "0.5em" }}>{props.title}</div>
+            </div>
           </div>
-          { props.hideButtons ? null :
-          <div className="os-window-titlebar-buttons">
-            <OSButton className="os-window-titlebar-minimize" onClick={props.minimizeProgram} link="" style={{ height: "0.9em", width: "0.9em" }}>-</OSButton>
-            <OSButton className="os-window-titlebar-maximize" onClick={toggleMaximize} link="" style={{ height: "0.9em", width: "0.9em" }}><div className="maximize-box" /></OSButton>
-            <OSButton className="os-window-titlebar-close" onClick={props.closeProgram} link="" style={{ height: "0.9em", width: "0.9em" }}>x</OSButton>
-          </div>}
-        </div>
-        <div className="os-window-file-menu">
-          <div className="os-window-file-menu-option">File</div>
-          <div className="os-window-file-menu-option">Edit</div>
-          <div className="os-window-file-menu-option">View</div>
-          <div className="os-window-file-menu-option">Help</div>
-        </div>
-        <div className="os-window-content">
+
+          : <>
+            <div className={"os-window-titlebar" + (props.active ? " active" : "")}>
+              <div style={{ flexGrow: 2, display: "flex" }} className="handle">
+                <div className="os-window-titlebar-icon"><img src={programs[props.program].picture} alt={programs[props.program].title} /></div>
+                <div className="os-window-titlebar-title" onDoubleClick={toggleMaximize}>{programs[props.program].title}</div>
+              </div>
+              <div className="os-window-titlebar-buttons">
+                <OSButton className="os-window-titlebar-minimize" onClick={props.minimizeProgram} link="" style={{ height: "0.9em", width: "0.9em" }}>-</OSButton>
+                <OSButton className="os-window-titlebar-maximize" onClick={toggleMaximize} link="" style={{ height: "0.9em", width: "0.9em" }}><div className="maximize-box" /></OSButton>
+                <OSButton className="os-window-titlebar-close" onClick={props.closeProgram} link="" style={{ height: "0.9em", width: "0.9em" }}>x</OSButton>
+              </div>
+            </div>
+            <div className="os-window-file-menu">
+              <div className="os-window-file-menu-option">File</div>
+              <div className="os-window-file-menu-option">Edit</div>
+              <div className="os-window-file-menu-option">View</div>
+              <div className="os-window-file-menu-option">Help</div>
+            </div>
+          </>
+        }
+
+        <div className="os-window-content" style={props.program == -1 ? { borderStyle: "none" } : {}}>
           {props.children}
         </div>
-        <div className="os-window-status">
-          <div className="os-window-status-left" style={props.showStatusRight ? {} : { border: "none" }}>Ready</div>
-          <div className="os-window-status-right" style={props.showStatusRight ? {} : { visibility: "hidden" }}>
-            <div className="os-window-status-right-1">Read-only</div>
-            <div className="os-window-status-right-2">&#8203;</div>
-            <div className="os-window-status-right-3">NUM</div>
-            <div className="os-window-status-right-4">&#8203;</div>
-            <div className="os-window-status-right-5">&#8203;</div>
+        {props.program == -1 ? null
+          : <div className="os-window-status">
+            <div className="os-window-status-left" style={props.showStatusRight ? {} : { border: "none" }}>Ready</div>
+            <div className="os-window-status-right" style={props.showStatusRight ? {} : { visibility: "hidden" }}>
+              <div className="os-window-status-right-1">Read-only</div>
+              <div className="os-window-status-right-2">&#8203;</div>
+              <div className="os-window-status-right-3">NUM</div>
+              <div className="os-window-status-right-4">&#8203;</div>
+              <div className="os-window-status-right-5">&#8203;</div>
+            </div>
           </div>
-        </div>
+        }
       </div>
     </Rnd>
   );

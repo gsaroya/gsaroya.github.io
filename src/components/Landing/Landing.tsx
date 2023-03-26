@@ -33,14 +33,17 @@ function OSLanding() {
 
   return (
     <div className="landing-component" ref={ref}>
-      <OSWindow closeProgram={() => {}}
-      minimizeProgram={() => {}}
-      bringToFront={() => {}}
-      program={0}
-      index={0}
-      desktopRef={ref}
-      active={true}
-      hideButtons={true}></OSWindow>
+      <OSWindow closeProgram={() => { }}
+        minimizeProgram={() => { }}
+        bringToFront={() => { }}
+        program={-1}
+        index={0}
+        desktopRef={ref}
+        active={true}
+        hideButtons={true}
+        title={"Welcome"}
+        large={true}
+      ></OSWindow>
     </div>
   );
 }
