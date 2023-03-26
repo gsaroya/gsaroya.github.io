@@ -1,0 +1,124 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.landing-component {
+  @include flex-col;
+  background-color: var(--bg-color);
+  height: calc(var(--vh, 1vh) * 100);
+  width: 100vw;
+}
+
+.landing-window {
+  @include flex-row;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2em;
+}
+
+.landing-window-blurb-col {
+  @include flex-col;
+  gap: 2em;
+  padding: 2em;
+  align-items: center;
+}
+
+.landing-window-blurb {
+  font-size: 1.3em;
+}
+
+.landing-window-blurb-button {
+  width: min(100%, 20em);
+  height: 10em;
+}
+
+.landing-window-blurb-button .os-button-content {
+  height: 100%;
+  width: 100%;
+}
+
+.landing-window-blurb-button img {
+  height: 100%;
+  width: 100%;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.landing-window-photo-col {
+  @include flex-col;
+  gap: 1.5em;
+  padding-left: 2em;
+  border-color: black !important;
+  border-left: dotted 0.2em;
+}
+
+.landing-window-photo {
+  border-radius: 1em;
+  height: 15em;
+  width: 15em;
+}
+
+.landing-window-photo-col-buttons {
+  @include flex-col;
+  gap: 1em;
+}
+
+.landing-window-photo-col-buttons img {
+  height: 1em;
+  width: 1em;
+}
+
+.landing-window-photo-col .os-button {
+  font-size: 2em;
+}
+
+.landing-window-photo-col .os-button-content {
+  @include flex-row;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.win-width-2,
+.win-width-3 {
+  .landing-window {
+    @include flex-col;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .landing-window-blurb-col {
+    padding-top: 0;
+  }
+
+  .landing-window-blurb {
+    font-size: 1.2em;
+  }
+
+  .landing-window-blurb-button {
+    width: min(100%, 16em);
+    height: 8em;
+  }
+
+  .landing-window-photo-col {
+    @include flex-row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0;
+    margin-top: 1em;
+    padding-top: 1em;
+    border-left: none;
+    border-top: dotted 0.2em;
+    font-size: 0.8em;
+  }
+
+  .landing-window-photo {
+    height: 10em;
+    width: 10em;
+  }
+
+  .landing-window-photo-col-buttons .os-button {
+    max-width: 8em;
+  }
+}

@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import OSBSOD from "./components/Error/BSOD";
 import OSHome from "./components/Home/Home";
+import OSLanding from "./components/Landing/Landing";
 import OSLoginPortal from "./components/Login/Login";
 import "./main.scss";
 import "./responsive.scss";
@@ -14,6 +15,11 @@ import "./responsive.scss";
 const router = createHashRouter([
   {
     path: "/",
+    element: <OSLanding />,
+    errorElement: <OSBSOD />,
+  },
+  {
+    path: "/Login",
     element: <OSLoginPortal />,
     errorElement: <OSBSOD />,
   },

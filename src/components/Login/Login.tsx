@@ -80,10 +80,10 @@ function OSLogin(props: LoginProps) {
             <OSButton link={"/Home"} hasLink={true} onClick={() => {
               localStorage.removeItem("loggedIn");
             }}>Login</OSButton>
-            <OSButton link="" onClick={() => {
+            <OSButton link={"/"} hasLink={true} onClick={() => {
               localStorage.removeItem("booted");
               props.setBooted(false);
-            }}>Reboot</OSButton>
+            }}>Shutdown</OSButton>
           </div>
         </div>
       </div>
